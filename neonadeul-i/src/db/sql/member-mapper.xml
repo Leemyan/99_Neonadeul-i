@@ -29,6 +29,16 @@
 	 , LEAVEDATE
 	 , MEMBERSHIP
      )
+     VALUES
+     (
+        SEQ_MNO.NEXTVAL
+      ,  ?
+      ,  ?
+      ,  ?
+      ,  ?
+      ,  ?
+      ,  ?
+      ,  ?
+      )
 	</entry>
-
 </properties>

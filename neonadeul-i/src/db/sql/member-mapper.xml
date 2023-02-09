@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="loginMember">
+	SELECT
+		  MNO
+		, USERNAME
+		, EMAIL
+		, USERPWD
+		, BIRTH
+		, ENROLLDATE
+		, LEAVEDATE
+		, MEMBERSHIP
+	FROM MEMBER
+	WHERE EMAIL = ?
+	AND USERPWD = ?
+	</entry>
+	
+	<entry key="insertMember">
+	INSERT
+	 INTO MEMBER
+	(
+	   MNO
+	 , USERNAME
+	 , EMAIL
+	 , USERPWD
+	 , BIRTH
+	 , ENROLLDATE
+	 , LEAVEDATE
+	 , MEMBERSHIP
+     )
+	</entry>
+
+</properties>

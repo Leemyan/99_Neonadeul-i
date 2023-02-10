@@ -88,7 +88,7 @@
             </div>
             <div align="center">
                 <button type="button">취소</button>
-                <button type="button">완료</button>
+                <button type="submit">완료</button>
             </div>
         </form>
         

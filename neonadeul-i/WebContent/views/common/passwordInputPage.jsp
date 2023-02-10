@@ -38,7 +38,7 @@
         <div id="wrap_input">
             <div id="input_pwd" align="center">
                 <input type="password" id="password" placeholder="비밀번호를 입력하세요">
-                <button id="password_submit">로그인</button>
+                <button type="submit" id="password_submit" onclick="return validatePwd()">로그인</button>
             </div>
             <div id="pwd-null">공백입니다.</div>
             <div id="pwd-foot" align="right">
@@ -52,6 +52,12 @@
         let login_btn = document.getElementById("login_btn");
         let password_submit = document.getElementById("password_submit");
         let 
+        
+        function validatePwd(){
+        	if($("input[id=password]").val() != $(""))
+        		alert("아이디 혹은 비밀번호가 일치하지 않습니다.")
+        		return false;
+        }
 
     </script>
 	

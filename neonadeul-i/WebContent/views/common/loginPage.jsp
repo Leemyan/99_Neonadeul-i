@@ -43,20 +43,26 @@
         <div id="wrapDiv">
             <div id="login_top">
                 <img src="../resource/cat (베리 페리_2022).png" alt="cat" width="30px" height="30px">
-                너나들이:: 로그인
+                		  <a href="<%= contextPath %>">너나들이:: 로그인</a>
             </div>
             <div id="login_logon">
                 > 새로운 소식을 사람들과 공유하세요
                 <input type="text" name="userId" placeholder="아이디를 입력하세요">
-                <button type="button" id="login_btn">로그인</button>
+                <button type="button" id="login_btn" data-toggle="modal" data-target="#inputPwd">로그인</button>
             </div>
             <div id="login_findid">
                 <button type="button"> <a href="#">아이디찾기</a></button>
             </div>
             <div id="login_enroll">
-                <button type="button"> <a href="#">가입하기</a></button>
+                <button type="button" onclick="enrollPage()">가입하기</button>
                 <button type="button"> <a href="#">문의하기</a></button>
             </div>
+            
+            <script>
+            	function enrollPage(){
+            		location.href = "<%= contextPath %>"/views/member/memberEnrollForm.jsp
+            	}
+            </script>
             <div id="login_foot">
                 <a href="#">이용약관</a>
                 <a href="#">개인정보처리방침</a>

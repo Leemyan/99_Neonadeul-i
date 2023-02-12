@@ -36,9 +36,43 @@
       ,  ?
       ,  ?
       ,  ?
-      ,  ?
-      ,  ?
-      ,  ?
+      ,  SYSDATE
+      ,  DEFAULT
+      ,  DEFAULT
       )
+	</entry>
+	
+	<entry key="updateMember">
+	UPDATE MEMBER
+		SET USERNAME = ?
+	WHERE EMAIL = ?
+	</entry>
+	
+	<entry key="selectMember">
+	SELECT 
+		MNO
+	  , USERNAME
+	  , EMAIL
+	  , USERPWD
+	  , BIRTH
+	  , ENROLLDATE
+	  , LEAVEDATE
+	  , MEMBERSHIP
+	FROM MEMBER
+	WHERE EMAIL = ?
+	</entry>
+	
+	<entry key="updatePwd">
+	UPDATE MEMBER
+		SET USERPWD = ?
+	WHERE EMAIL = ?
+	AND USERPWD = ?
+	</entry>
+	
+	<entry key="deleteMember">
+	UPDATE MEMBER
+	SET MEMBERSHIP = '3'
+	WHERE EMAIL = ?
+	 AND USERPWD = ?
 	</entry>
 </properties>

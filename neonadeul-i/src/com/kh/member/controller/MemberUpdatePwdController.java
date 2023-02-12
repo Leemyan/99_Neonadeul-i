@@ -8,29 +8,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
+
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class MemberUpdatePwdController
  */
-@WebServlet("/logout.me")
-public class LogoutController extends HttpServlet {
+@WebServlet("/updatePwd.me")
+public class MemberUpdatePwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutController() {
+    public MemberUpdatePwdController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPWd");
+		String updatePwd = request.getParameter("updatePwd");
 		
-		response.sendRedirect(request.getContextPath());
-	
+		Member updateMem = new MemberService().updatePwd(userId, userPwd, updatePwd);
+		HttpSession session = request.getSession();
+		
+		if(updateMem == null) {
+			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");
+		}else {
+			session.setAttribute("alertMsg", "성공적으로 비밀번호가 변경되었습니다.");
+			session.setAttribute("loginUser", updateMem);
+		}
+		response.sendRedirect(request.getContextPath() + "/myPage.me");
 	}
 
 	/**

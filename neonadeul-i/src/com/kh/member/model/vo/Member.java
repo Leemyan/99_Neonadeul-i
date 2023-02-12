@@ -27,6 +27,13 @@ public class Member {
 		this.leaveDate = leaveDate;
 		this.membership = membership;
 	}
+	
+	public Member(String userName, String userId, String userPwd, Date birth) { // ?
+		this.userName = userName;
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.birth = birth;
+	}
 
 	public int getUserNo() {
 		return userNo;

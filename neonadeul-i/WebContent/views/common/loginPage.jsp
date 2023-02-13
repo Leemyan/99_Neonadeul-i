@@ -93,6 +93,9 @@
         <p align = "center">c 2023 MySNS reserved</p> 
     </div>
     
+
+    const userId = document.getElementByName("userId")
+
     <!-- The Modal -->
   <form action="<%=contextPath%>/login.me" method="post">
       <input type="hidden">
@@ -109,7 +112,7 @@
         <!-- Modal body -->
         <div class="modal-body" align="center">
           <form action="<%= contextPath %>/login.me" method="post">
-          <input type="hidden" name="userId" value="">
+          <input type="hidden" name="userId" value="userId">
           비밀번호 입력: 
           <input type="password" name="userPwd" required>
           <button type="submit" onclick="return validatePwd();">로그인</button>

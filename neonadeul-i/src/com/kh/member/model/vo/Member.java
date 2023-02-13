@@ -6,7 +6,7 @@ public class Member {
 	
 	private int userNo; // MNO
 	private String userName; // USERNAME
-	private String userId; // EMAIL
+	private String email; // EMAIL
 	private String userPwd; // USERPWD
 	private Date birth; // BIRTH
 	private Date enrollDate; // ENROLLDATE
@@ -15,12 +15,12 @@ public class Member {
 	
 	public Member() {}
 
-	public Member(int userNo, String userName, String userId, String userPwd, Date birth, Date enrollDate,
+	public Member(int userNo, String userName, String email, String userPwd, Date birth, Date enrollDate,
 			Date leaveDate, int membership) {
 		super();
 		this.userNo = userNo;
 		this.userName = userName;
-		this.userId = userId;
+		this.email = email;
 		this.userPwd = userPwd;
 		this.birth = birth;
 		this.enrollDate = enrollDate;
@@ -28,11 +28,19 @@ public class Member {
 		this.membership = membership;
 	}
 	
-	public Member(String userName, String userId, String userPwd, Date birth) { // ?
+	public Member(String userName, String email, String userPwd, Date birth) { // ?
 		this.userName = userName;
-		this.userId = userId;
+		this.email = email;
 		this.userPwd = userPwd;
 		this.birth = birth;
+	}
+	
+
+	public Member(String userName, String email, String userPwd) {
+		super();
+		this.userName = userName;
+		this.email = email;
+		this.userPwd = userPwd;
 	}
 
 	public int getUserNo() {
@@ -51,12 +59,12 @@ public class Member {
 		this.userName = userName;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUserPwd() {
@@ -101,7 +109,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [userNo=" + userNo + ", userName=" + userName + ", userId=" + userId + ", userPwd=" + userPwd
+		return "Member [userNo=" + userNo + ", userName=" + userName + ", email=" + email + ", userPwd=" + userPwd
 				+ ", birth=" + birth + ", enrollDate=" + enrollDate + ", leaveDate=" + leaveDate + ", membership="
 				+ membership + "]";
 	}

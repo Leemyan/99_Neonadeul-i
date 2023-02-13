@@ -8,11 +8,11 @@ import com.kh.member.model.vo.Member;
 import static com.kh.common.JDBCTemplate.*;
 
 public class MemberService {
-	public Member loginMember(String userId, String userPwd) {
+	public Member loginMember(String email, String userPwd) {
 		
 		Connection conn = getConnection();
 		
-		Member m = new MemberDao().loginMember(conn, userId, userPwd);
+		Member m = new MemberDao().loginMember(conn, email, userPwd);
 		
 		close(conn);
 		
@@ -45,7 +45,7 @@ public class MemberService {
 		if(result > 0) { // 성공
 			commit(conn);
 			// 재조회
-			updateMem = new MemberDao().selectMember(conn, m.getUserId());
+			updateMem = new MemberDao().selectMember(conn, m.getEmail());
 			
 		}else { // 실패
 			rollback(conn);
@@ -55,14 +55,14 @@ public class MemberService {
 		return updateMem;
 	}
 	
-	public Member updatePwd(String userId, String userPwd, String updatePwd) {
+	public Member updatePwd(String email, String userPwd, String updatePwd) {
 		Connection conn = getConnection();
-		int result = new MemberDao().updatePwd(conn, userId, userPwd, updatePwd);
+		int result = new MemberDao().updatePwd(conn, email, userPwd, updatePwd);
 		Member updateMem = null;
 		
 		if(result > 0) {
 			commit(conn);
-			updateMem = new MemberDao().selectMember(conn, userId);
+			updateMem = new MemberDao().selectMember(conn, email);
 		}else {
 			rollback(conn);
 		}
@@ -70,9 +70,9 @@ public class MemberService {
 		return updateMem;
 	}
 	
-	public int deleteMember(String userId, String userPwd) {
+	public int deleteMember(String email, String userPwd) {
 		Connection conn = getConnection();
-		int result = new MemberDao().deleteMember(conn, userId, userPwd);
+		int result = new MemberDao().deleteMember(conn, email, userPwd);
 		
 		if(result > 0) {
 			commit(conn);

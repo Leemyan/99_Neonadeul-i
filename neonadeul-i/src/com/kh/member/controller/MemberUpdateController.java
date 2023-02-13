@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kh.member.model.vo.Member;
+
 /**
  * Servlet implementation class MemberUpdateController
  */
@@ -27,12 +29,12 @@ public class MemberUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("email");
+		String email = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
 		
 		
-		Member m = new Member(userId, userPwd, userName);
+		Member m = new Member(email, userPwd, userName);
 	}
 
 	/**

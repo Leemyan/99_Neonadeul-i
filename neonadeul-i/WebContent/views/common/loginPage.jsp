@@ -63,11 +63,10 @@
                   > 새로운 소식을 사람들과 공유하세요
                   <input type="text" name="userId" placeholder="아이디를 입력하세요">
                   <!-- 테스트용으로 만듦 추후에 모달 or 페이지넘김으로 비밀번호 입력창 만들기 -->
-                  <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요">
+                  <!-- <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요"> -->
                   <button type="button" id="login_btn" data-toggle="modal" data-target="#inputPwdModal">로그인</button>
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                  
-                  <button type="submit">임시로그인</button>
+                                    
+                  <!-- <button type="submit">임시로그인</button> -->
             </div>
           </form>
 
@@ -81,7 +80,7 @@
             
             <script>
             	function enrollPage(){
-            		location.href = "<%= contextPath %>"/views/member/memberEnrollForm.jsp
+            		location.href = "<%= contextPath %>/views/member/memberEnrollForm.jsp"
             	}
             </script>
             <div id="login_foot" align="center">
@@ -95,62 +94,45 @@
     </div>
     
     <!-- The Modal -->
-	<div class="modal" id="inputPwdModal">
-  	<div class="modal-dialog">
-    <div class="modal-content">
+  <form action="<%=contextPath%>/login.me" method="post">
+      <input type="hidden">
+      <div class="modal" id="inputPwdModal">
+      <div class="modal-dialog">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">비밀번호 입력</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">비밀번호 입력</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-      <!-- Modal body -->
-      <div class="modal-body" align="center">
-        <form action="<%= contextPath %>/login.me" method="post">
-        <input type="hidden" name="userId" value="">
-        비밀번호 입력: 
-        <input type="password" name="userPwd" required>
-        <button type="submit" onclick="return validatePwd();">로그인</button>
-        </form>
-      </div>
-      
-      <script>
-        function validatePwd(){
-          if($()){
-            /*무엇인가를 적어보자. 비밀번호가 맞지않으면 안된다. 뭐 그런거?*/
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+          <form action="<%= contextPath %>/login.me" method="post">
+          <input type="hidden" name="userId" value="">
+          비밀번호 입력: 
+          <input type="password" name="userPwd" required>
+          <button type="submit" onclick="return validatePwd();">로그인</button>
+          </form>
+        </div>
+        
+        <script>
+          function validatePwd(){
+            if($()){
+              /*무엇인가를 적어보자. 비밀번호가 맞지않으면 안된다. 뭐 그런거?*/
+            }
           }
-        }
-      </script>
-	
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-      
-    </div>
-    </div>
-    </div>
+        </script>
     
-    <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
       </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-    </div>
-
-  </div>
-</div>
+  </form>
+    
 </body>
 </html>

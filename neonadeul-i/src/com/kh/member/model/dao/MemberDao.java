@@ -17,7 +17,7 @@ public class MemberDao {
 		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
 	}
 	
-	public Member loginMember(Connection conn, String userId, String userPwd) {
+	public Member loginMember(Connection conn, String email, String userPwd) {
 		
 		Member m = null;
 		
@@ -29,7 +29,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, userId);
+			pstmt.setString(1, email);
 			pstmt.setString(2, userPwd);
 			
 			rset = pstmt.executeQuery();
@@ -64,7 +64,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getUserId());
+			pstmt.setString(2, m.getEmail());
 			pstmt.setString(3, m.getUserPwd());
 			pstmt.setDate(4, m.getBirth());
 			
@@ -88,7 +88,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getUserId());
+			pstmt.setString(2, m.getEmail());
 			
 			result = pstmt.executeUpdate();
 			
@@ -158,7 +158,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int deleteMember(Connection conn, String userId, String userPwd) {
+	public int deleteMember(Connection conn, String email, String userPwd) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -167,7 +167,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, userId);
+			pstmt.setString(1, email);
 			pstmt.setString(2, userPwd);
 			
 			result = pstmt.executeUpdate();

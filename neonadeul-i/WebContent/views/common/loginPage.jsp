@@ -53,22 +53,19 @@
     <div id="wrap">
         <div id="wrapDiv">
             <div id="login_top">
-                <img src="../resource/cat (베리 페리_2022).png" alt="cat" width="100px" height="100px">
+                <img src="../resource/cat (베리 페리_2022).png" alt="cat" width="100px" height="100px" >
                 		  <a href="<%= contextPath %>">너나들이:: 로그인</a>
             </div>
             <form action="<%=contextPath%>/login.me" method="post">
 
-            <div id="login_logon">
-
+	            <div id="login_logon">
+					
                   > 새로운 소식을 사람들과 공유하세요
                   <input type="text" name="userId" placeholder="아이디를 입력하세요">
-                  <!-- 테스트용으로 만듦 추후에 모달 or 페이지넘김으로 비밀번호 입력창 만들기 -->
-                  <!-- <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요"> -->
                   <button type="button" id="login_btn" data-toggle="modal" data-target="#inputPwdModal">로그인</button>
                                     
-                  <!-- <button type="submit">임시로그인</button> -->
-            </div>
-          </form>
+	            </div>
+          	</form>
 
             <div id="login_findid">
                 <button type="button"> <a href="#">아이디찾기</a></button>
@@ -93,8 +90,7 @@
         <p align = "center">c 2023 MySNS reserved</p> 
     </div>
     
-
-    const userId = document.getElementByName("userId")
+    <!--const userId = document.getElementByName("userId") 안되니 봉인  -->
 
     <!-- The Modal -->
   <form action="<%=contextPath%>/login.me" method="post">
@@ -111,12 +107,12 @@
 
         <!-- Modal body -->
         <div class="modal-body" align="center">
-          <form action="<%= contextPath %>/login.me" method="post">
+         
           <input type="hidden" name="userId" value="userId">
           비밀번호 입력: 
           <input type="password" name="userPwd" required>
           <button type="submit" onclick="return validatePwd();">로그인</button>
-          </form>
+         
         </div>
         
         <script>

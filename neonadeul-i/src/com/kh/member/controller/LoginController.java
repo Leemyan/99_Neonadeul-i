@@ -33,10 +33,10 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String email = request.getParameter("email");
+		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		
-		Member loginUser = new MemberService().loginMember(email, userPwd);
+		Member loginUser = new MemberService().loginMember(userId, userPwd);
 		
 		if(loginUser == null) {
 			request.setAttribute("errorMsg", "로그인에 실패했습니다.");
@@ -44,11 +44,11 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		} else {
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("loginUser", loginUser);
-			
-			response.sendRedirect(request.getContextPath());
+//			HttpSession session = request.getSession();
+//			session.setAttribute("loginUser", loginUser);
+//			response.sendRedirect(request.getContextPath());
+			RequestDispatcher view = request.getRequestDispatcher("views/common/mainPage.jsp");
+			view.forward(request, response);
 		}
 	
 	

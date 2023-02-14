@@ -2,6 +2,7 @@ package com.kh.member.controller;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,6 @@ public class MemberInsertController extends HttpServlet {
      */
     public MemberInsertController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,11 +34,11 @@ public class MemberInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
+					
 		String userId = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
 		String userName = request.getParameter("userName");
-		Date birth = (Date)(request.getParameter("birth"));
+		Date birth = Date.valueOf(request.getParameter("birth"));
 		
 		Member m = new Member(userId, userPwd, userName, birth);
 		int result = new MemberService().insertMember(m);

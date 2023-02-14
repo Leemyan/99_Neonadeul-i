@@ -17,7 +17,7 @@ public class MemberDao {
 		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
 	}
 	
-	public Member loginMember(Connection conn, String email, String userPwd) {
+	public Member loginMember(Connection conn, String userId, String userPwd) {
 		
 		Member m = null;
 		
@@ -29,7 +29,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, email);
+			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			
 			rset = pstmt.executeQuery();

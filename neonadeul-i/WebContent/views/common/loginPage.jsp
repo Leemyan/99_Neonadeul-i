@@ -56,8 +56,8 @@
                 <img src="../resource/cat (베리 페리_2022).png" alt="cat" width="100px" height="100px" >
                 		  <a href="<%= contextPath %>">너나들이:: 로그인</a>
             </div>
+            
             <form action="<%=contextPath%>/login.me" method="post">
-
 	            <div id="login_logon">
 					
                   > 새로운 소식을 사람들과 공유하세요
@@ -65,7 +65,7 @@
                   <button type="button" id="login_btn" data-toggle="modal" data-target="#inputPwdModal">로그인</button>
                                     
 	            </div>
-          	</form>
+          	
 
             <div id="login_findid">
                 <button type="button"> <a href="#">아이디찾기</a></button>
@@ -93,8 +93,8 @@
     <!--const userId = document.getElementByName("userId") 안되니 봉인  -->
 
     <!-- The Modal -->
-  <form action="<%=contextPath%>/login.me" method="post">
-      <input type="hidden">
+  
+      <input type="hidden" name="userId" value="">
       <div class="modal" id="inputPwdModal">
       <div class="modal-dialog">
       <div class="modal-content">

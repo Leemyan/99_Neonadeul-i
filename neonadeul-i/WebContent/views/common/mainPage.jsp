@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String contextPath = request.getContextPath();
+
+ %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,9 @@
 </head>
 <body>
     <div class="wrap-main">
-        <div align="right"><button type="button" >로그아웃</button></div>
+        <div align="right">
+        	<button type="button" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
+        </div>
         <div><input type="image" src="../resource/cat (베리 페리_2022).png" width="30px" height="30px" alt="cat">너나들이::Home</div>
         <div>>새로운 소식을 전해주세요!</div>
         <div>

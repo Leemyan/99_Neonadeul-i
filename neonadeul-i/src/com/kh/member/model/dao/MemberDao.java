@@ -16,10 +16,10 @@ public class MemberDao {
 	private Properties prop = new Properties();
 	
 	public MemberDao() {
+		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
 		try {
-			prop.loadFromXML(new FileInputStream(MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath()));
+			prop.loadFromXML(new FileInputStream(filePath));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

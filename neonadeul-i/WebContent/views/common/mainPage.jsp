@@ -27,7 +27,7 @@
             <div>입력창</div>
         </div>
         <div>
-            <button type="button">새로고침</button>
+            <button type="button" onclick="location.href='<%=contextPath%>/login.me'">새로고침</button>
             <div>공지:: 서로간의 예의를 지켜주세요!!</div>
         </div>
         <div>작성한 내용이 표시 될 공간</div>

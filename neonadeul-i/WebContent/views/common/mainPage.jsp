@@ -19,7 +19,7 @@
             border-bottom: 5px solid lightgray;
             border-left: 2px solid lightgray;
             border-right: 5px solid lightgray;
-            width: 500px;
+            width: 1000px;
             height: 750px;
             margin: auto;
             margin-top: 100px;
@@ -44,7 +44,7 @@
 
         <div id="main-input" align="center">
             <div style="display: inline-block;">
-                <button type="button">@<%=아이디%></button>
+                <button type="button">@</button>
             </div>
             <div style="display: inline-block;">
                 <input type="text">

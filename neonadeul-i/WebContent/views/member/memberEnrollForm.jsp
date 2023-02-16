@@ -41,7 +41,7 @@
 
             <div id="wrap-input" align="center"  >
                 <div align="center" style="height: 75px; line-height: 37px;">
-                    <img src="../../resources/image/webLogo/google.png" alt="구글" width="80px">
+                    <img src="../../resources/image/webLogo/google.png" alt="구글" width="80px" onclick="">
                     <img src="../../resources/image/webLogo/naver.png" alt="네이버" width="80px" style="margin: 0px 15px;">
                     <img src="../../resources/image/webLogo/kakao.png" alt="카카오" width="80px">
                 </div>

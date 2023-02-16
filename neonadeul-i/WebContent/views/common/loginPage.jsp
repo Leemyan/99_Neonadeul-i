@@ -19,6 +19,7 @@
           width: 1000px;
           height: 600px;
           margin: auto;
+          margin-top: 100px;
       }
       #wrapDiv{ 
           border-top: 1px solid lightgray;
@@ -33,7 +34,7 @@
       #input-id{width: 400px;}
 
       
-      #wrapDiv div {border: 1px solid black;}
+      /* #wrapDiv div {border: 1px solid black;} */
       #login_top{width: 100%; height: 20%;box-sizing: border-box;}
 
       #login_findid{width: 100%;height: 10%;box-sizing: border-box;}
@@ -111,7 +112,7 @@
       </form>
 
                 <div id="login_findid">
-                    <button type="button"> <a href="#">아이디찾기</a></button>
+                    <button type="button" style="margin-left: 50px;"> 아이디찾기</button>
                 </div>
                 <div id="login_enroll" align="right">
                     <button type="button" onclick="enrollPage()">가입하기</button>

@@ -33,8 +33,8 @@
       #input-id{width: 400px;}
 
       
-      /* #wrapDiv div {border: 1px solid black;} */
-      #login_top{width: 100%; height: 30%;box-sizing: border-box;}
+      #wrapDiv div {border: 1px solid black;}
+      #login_top{width: 100%; height: 20%;box-sizing: border-box;}
 
       #login_findid{width: 100%;height: 10%;box-sizing: border-box;}
       #login_enroll{width: 100%;height: 20%;box-sizing: border-box;}
@@ -61,9 +61,9 @@
             </div>
             
             <form action="<%=contextPath%>/login.me" method="post">
-	            <div id="login_logon" style="height:150px;">
+	            <div id="login_logon" style="height:200px;">
 					
-                   <br><h3>새로운 소식을 사람들과 공유하세요</h3> <br>
+                   <br><h3> &nbsp;새로운 소식을 사람들과 공유하세요</h3> <br>
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                    <input id="input-id" type="text" name="userId" placeholder="아이디를 입력하세요" >
                   <button type="button" id="login_btn" data-toggle="modal" data-target="#inputPwdModal">로그인</button>
@@ -113,9 +113,9 @@
                 <div id="login_findid">
                     <button type="button"> <a href="#">아이디찾기</a></button>
                 </div>
-                <div id="login_enroll">
+                <div id="login_enroll" align="right">
                     <button type="button" onclick="enrollPage()">가입하기</button>
-                    <button type="button"> <a href="#">문의하기</a></button>
+                    <button type="button" align=""> <a href="#">문의하기</a></button>
                 </div>
                 
                 <script>

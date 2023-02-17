@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
     <style>
         /* div{border: 1px solid red;} */
 
@@ -22,7 +23,7 @@
             width: 1000px;
             height: 750px;
             margin: auto;
-            margin-top: 100px;
+            margin-top: 50px;
         }
 
         #main-top{width: 100%; height: 5%; box-sizing: border-box;}
@@ -47,20 +48,35 @@
                 <button type="button">@</button>
             </div>
             <div style="display: inline-block;">
-                <input type="text">
+                <input type="text" style="width: 400px; height: 30px;">
             </div>
-            <button type="submit" onclick="내용넘기기">입력</button>
+            <button type="submit" onclick="inputchat()" style="height: 36px;">입력</button>
         </div>
         
+        <script>
+            function inputchat(){
+                // 클릭하면 아래 $board에 [닉네임+'::' + 위에 입력한 내용 + '날짜및시간' ] 뿌려주기
+            }
+        </script>
+        
+
         <div id="wrap-chat" align="center">
             <div>
-                <button type="button" style="display: inline-block;">새로고침</button>
+                <button type="button" style="display: inline-block;" onclick="location.reload()" >새로고침</button>
                 <div style="display: inline-block;"><h4>공지:: 서로간의 예의를 지켜주세요!!</h4></div>
             </div>
-            <div style="height: 353px; ;">작성한 내용이 표시 될 공간</div>
+            <div id="board" style="height: 353px; border: 1px solid black;">작성한 내용이 표시 될 공간</div>
         </div>
 
-        <div id="main-footer" align="center">
+        <!-- <script>
+            function refresh(){
+                $('#board').load(location.href+' #board');
+                console.log('성공');
+            }
+
+        </script> -->
+
+        <div id="main-footer" align="center" style="margin-top: 20px ;">
             <a href="#">이용약관</a>
             <a href="#">개인정보처리방침</a>
             <a href="#">쿠키정책</a>

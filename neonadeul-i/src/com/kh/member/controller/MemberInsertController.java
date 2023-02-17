@@ -35,12 +35,19 @@ public class MemberInsertController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 					
+		String userName = request.getParameter("userName");
 		String userId = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
-		String userName = request.getParameter("userName");
-		Date birth = Date.valueOf(request.getParameter("birth"));
+		// Date birth = request.getParameter("birth");
+		Date[] birthArr = request.getParameter("birth");
 		
-		Member m = new Member(userId, userPwd, userName, birth);
+		String birth = "";
+		if(birthArr != null) {
+			birth = String.join("/", birthArr);
+		}
+		
+		Member m = new Member(userName, userId, userPwd, (Date)birth);
+		
 		int result = new MemberService().insertMember(m);
 		
 		if(result > 0){
@@ -54,6 +61,8 @@ public class MemberInsertController extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("/views/common/errorPage.jsp");
 			view.forward(request, response);
 		}
+		
+		
 	}
 	
 

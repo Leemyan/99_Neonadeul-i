@@ -71,7 +71,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2, m.getEmail());
+			pstmt.setString(2, m.getUserId);
 			pstmt.setString(3, m.getUserPwd());
 			pstmt.setDate(4, m.getBirth());
 			

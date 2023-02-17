@@ -1,4 +1,4 @@
-package com.kh.member.controller;
+package src.com.kh.member.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.member.model.service.MemberService;
-import com.kh.member.model.vo.Member;
+import src.com.kh.member.model.service.MemberService;
+import src.com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberInsertController
@@ -36,17 +36,17 @@ public class MemberInsertController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 					
 		String userName = request.getParameter("userName");
-		String userId = request.getParameter("email");
+		String email = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
 		// Date birth = request.getParameter("birth");
-		Date[] birthArr = request.getParameter("birth");
-		
+		//Date[] birthArr = request.getParameter("birth");
+		/*
 		String birth = "";
 		if(birthArr != null) {
 			birth = String.join("/", birthArr);
 		}
-		
-		Member m = new Member(userName, userId, userPwd, (Date)birth);
+		*/
+		Member m = new Member(userName, email, userPwd);
 		
 		int result = new MemberService().insertMember(m);
 		

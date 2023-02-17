@@ -1,11 +1,11 @@
-package com.kh.member.model.service;
+package src.com.kh.member.model.service;
 
 import java.sql.Connection;
 
-import com.kh.member.model.dao.MemberDao;
-import com.kh.member.model.vo.Member;
+import src.com.kh.member.model.dao.MemberDao;
+import src.com.kh.member.model.vo.Member;
 
-import static com.kh.common.JDBCTemplate.*;
+import static src.com.kh.common.JDBCTemplate.*;
 
 public class MemberService {
 	

@@ -12,6 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <!-- Custom fonts for this template-->
+    <link href="../../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../../resources/css/sb-admin-2.min.css" rel="stylesheet">
     <style>
         /* div{border: 1px solid red;} */
 
@@ -40,12 +48,24 @@
         <div align="right" id="main-top">
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>
-        <div><input type="image" src="../../resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home</div>
+        <div>
+            <input type="image" src="../../resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
+        </div>
         <div id="main-an" align="center"><h2>새로운 소식을 전해주세요!</h2></div>
 
-        <div id="main-input" align="center">
-            <div style="display: inline-block;">
-                <button type="button">@</button>
+        <div id="main-input" align="center" >
+            <div class="dropdown mb-4" style="display: inline-block">
+                <button class="btn btn-primary dropdown-toggle" type="button"
+                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" >
+                    @이름칸
+                </button>
+                <div class="dropdown-menu animated--fade-in"
+                    aria-labelledby="dropdownMenuButton" style="z-index: 99;">
+                    <a class="dropdown-item" href="#">first </a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
             </div>
             <div style="display: inline-block;">
                 <input type="text" style="width: 400px; height: 30px;">

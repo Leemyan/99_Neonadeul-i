@@ -43,7 +43,7 @@
         
     </style>
 </head>
-<body>
+<body id="page-top">
     <div class="wrap-main">
         <div align="right" id="main-top">
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
@@ -62,9 +62,8 @@
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                     aria-labelledby="dropdownMenuButton" style="z-index: 99;">
-                    <a class="dropdown-item" href="#">first </a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="<%=contextPath%>/mypage.me">마이페이지 </a>
+                    
                 </div>
             </div>
             <div style="display: inline-block;">
@@ -104,6 +103,17 @@
         <div id="main-root">
             <p align = "center">c 2023 MySNS reserved</p>
         </div>
+        
+         <!-- Bootstrap core JavaScript-->
+        <script src="../../resources/vendor/jquery/jquery.min.js"></script>
+        <script src="../../resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="../../resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="../../resources/js/sb-admin-2.min.js"></script>
+
     </div>
 </body>
 </html>

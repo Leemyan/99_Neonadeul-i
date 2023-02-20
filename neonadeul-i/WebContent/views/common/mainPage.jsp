@@ -51,7 +51,7 @@
         <div>
             <input type="image" src="../../resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
         </div>
-        <div id="main-an" align="center"><h2>새로운 소식을 전해주세요!</h2></div>
+        <div id="main-an" align="center"><h2>흥미로운 소식을 전해주세요!</h2></div>
 
         <div id="main-input" align="center" >
             <div class="dropdown mb-4" style="display: inline-block">
@@ -62,7 +62,7 @@
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                     aria-labelledby="dropdownMenuButton" style="z-index: 99;">
-                    <a class="dropdown-item" href="<%=contextPath%>/mypage.me">마이페이지 </a>
+                    <a class="dropdown-item" href="<%=contextPath%>/mypage.me" >마이페이지 </a>
                     
                 </div>
             </div>

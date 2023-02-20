@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
-
+	// board 써라 못 가져다 쓴다.
  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,8 @@
 </head>
 <body id="page-top">
     <div class="wrap-main">
-        <div align="right" id="main-top">
+        <div align="right" id="main-top" class="" >
+            <button type="button" onclick="location.href='<%=contextPath%>/admin.op'">관리페이지</button>
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>
         <div>

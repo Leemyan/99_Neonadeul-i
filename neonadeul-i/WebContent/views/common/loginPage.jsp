@@ -57,7 +57,7 @@
     <div id="wrap">
         <div id="wrapDiv">
             <div id="login_top">
-                <img src="../../resources/image/cat/cat_2022.png" alt="cat" width="100px" height="100px" >
+                <img src="resources/image/cat/cat_2022.png" alt="cat" width="100px" height="100px" >
                 		  <a href="<%= contextPath %>"><b>너나들이:: 로그인</b></a>
             </div>
             

@@ -50,7 +50,7 @@
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>
         <div>
-            <input type="image" src="../../resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
+            <input type="image" src="resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
         </div>
         <div id="main-an" align="center"><h2>흥미로운 소식을 전해주세요!</h2></div>
 

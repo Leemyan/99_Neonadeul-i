@@ -54,7 +54,7 @@
     <div class="wrap">
         <div id="mypage">
             <div id="mypage-top">
-                <img src="../resource/cat (베리 페리_2022).png" alt="cat" width="50px" height="50px">
+                <img src="resources/image/cat/cat_2022.png" alt="cat" width="50px" height="50px">
                 ::마이페이지
             </div>
             <div id="mypage-write">

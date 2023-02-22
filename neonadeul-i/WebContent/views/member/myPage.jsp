@@ -38,6 +38,10 @@
         #mypage-outmem{width: 95%; height: 30px; box-sizing: border-box; margin: auto;}
         #mypage-foot{width: 100%; height: 30px; box-sizing: border-box;}
         #mypage-an{width: 100%; height: 70px; box-sizing: border-box;} 
+
+		/* #sp-write, #sp-reply{border: 1px solid black;} */
+		#sp-write{width: 98%; height: 48%; margin: 3px auto ;}
+		#sp-reply{width: 98%; height: 48%; margin: auto;}
     </style>
 
     <!-- Latest compiled and minified CSS -->
@@ -54,8 +58,8 @@
     <div class="wrap">
         <div id="mypage">
             <div id="mypage-top">
-                <img src="resources/image/cat/cat_2022.png" alt="cat" width="50px" height="50px">
-                ::마이페이지
+                <img src="resources/image/cat/cat_2022.png" alt="cat" width="30px" height="30px">
+                <p style="display: inline-block;">::마이페이지</p>
             </div>
             <div id="mypage-write">
                 <p style="margin: 10px;"><b>*내가 쓴 글/댓글</b></p>
@@ -67,7 +71,9 @@
                 </select>
             </div>
             <div id="mypage-space" style="border: 1px solid gray; opacity: 0.8;" >
-                기 작성했던 글이 나오는 공간
+				<div id="sp-write">기 작성했던 글이 나오는 공간</div>
+				<div id="sp-reply">기 작성했던 댓글이 나오는 공간</div>
+                
             </div>
 
             <div class="term">(빈공간)</div>

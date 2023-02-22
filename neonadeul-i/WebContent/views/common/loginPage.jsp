@@ -35,7 +35,7 @@
 
       
       /* #wrapDiv div {border: 1px solid black;} */
-      #login_top{width: 100%; height: 20%;box-sizing: border-box;}
+      #login_top{width: 100%; height: 20%;box-sizing: border-box; margin-top: 15px;}
 
       #login_findid{width: 100%;height: 10%;box-sizing: border-box;}
       #login_enroll{width: 100%;height: 20%;box-sizing: border-box;}
@@ -57,7 +57,7 @@
     <div id="wrap">
         <div id="wrapDiv">
             <div id="login_top">
-                <img src="resources/image/cat/cat_2022.png" alt="cat" width="100px" height="100px" >
+                <img src="resources/image/cat/cat_2022.png" alt="cat" width="50px" height="50px" >
                 		  <a href="<%= contextPath %>"><b>너나들이:: 로그인</b></a>
             </div>
             

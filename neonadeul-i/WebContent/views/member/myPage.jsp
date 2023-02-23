@@ -85,7 +85,7 @@
             </div>
 
 			<!-- The Modal -->
-			<form action="<%=contextPath%>/update.me">
+			<form action="<%=contextPath%>/updatePwd.me" method="post">
 				<div class="modal" id="inputPwdModal">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -98,6 +98,8 @@
 
 							<!-- Modal body -->
 							<div class="modal-body" align="center">
+							<%-- <input type="hidden" name="userId" value="<%=userId%>"> --%>
+							
 								<table>
 									<tr align="center">
 										<th>이름</th>
@@ -109,15 +111,15 @@
 									</tr>
 									<tr align="center">
 										<th>현재 비밀번호</th>
-										<td><input type="text"></td>
+										<td><input type="text" name="userPwd" required></td>
 									</tr>
 									<tr align="center">
 										<th>변경할 비밀번호</th>
-										<td><input type="text" name="updatePwd"></td>
+										<td><input type="text" name="updatePwd" required></td>
 									</tr>
 									<tr>
 										<th>변경할 비밀번호 확인</th>
-										<td><input type="text" name="checkPwd"></td>
+										<td><input type="text" name="checkPwd" required></td>
 									</tr>
 									<!-- 
 									<tr align="center">
@@ -226,6 +228,14 @@
 
 							</div>
 
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-warning"
+									data-dismiss="modal" onclick="return updateMem();">완료</button>
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">취소</button>
+							</div>
+							
 							<script>
 					            function updateMem(){
 					              if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val){
@@ -234,15 +244,7 @@
 				              			}
 				            	}
 				         	</script>
-
-							<!-- Modal footer -->
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-warning"
-									data-dismiss="modal" onclick="return updateMem();">완료</button>
-								<button type="button" class="btn btn-danger"
-									data-dismiss="modal">취소</button>
-							</div>
-
+					
 						</div>
 					</div>
 				</div>

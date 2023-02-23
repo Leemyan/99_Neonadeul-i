@@ -165,7 +165,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int deleteMember(Connection conn, String email, String userPwd) {
+	public int deleteMember(Connection conn, Member m) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -174,8 +174,8 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, email);
-			pstmt.setString(2, userPwd);
+			pstmt.setString(1, m.getEmail());
+			pstmt.setString(2, m.getUserPwd());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -1,9 +1,10 @@
+<%@page import="src.com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String contextPath  = request.getContextPath();
 	
-	//Member loginUser = (Member)session.getAttribute("loginUser");
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	//로그인 시도 전 menubar.jsp 로딩시 : null
 	// 로그인 성공 후 menubar.jsp 로딩 시 : 로그인 성공한 회원의 정보가 담겨있는 Member 객체
 
@@ -84,7 +85,7 @@
             </div>
 
 			<!-- The Modal -->
-			<form action="">
+			<form action="<%=contextPath%>/update.me">
 				<div class="modal" id="inputPwdModal">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -100,24 +101,25 @@
 								<table>
 									<tr align="center">
 										<th>이름</th>
-										<td>이름가져오기 수정가능</td>
+										<td><%=loginUser.getUserName()%></td>
 									</tr>
 									<tr align="center">
 										<th>이메일</th>
-										<td>이메일 가져오기 수정불가</td>
+										<td><%=loginUser.getEmail() %></td>
 									</tr>
 									<tr align="center">
 										<th>현재 비밀번호</th>
-										<td>현재 비밀번호 입력</td>
+										<td><input type="text"></td>
 									</tr>
 									<tr align="center">
 										<th>변경할 비밀번호</th>
-										<td>변경할 비밀번호 입력</td>
+										<td><input type="text" name="updatePwd"></td>
 									</tr>
 									<tr>
 										<th>변경할 비밀번호 확인</th>
-										<td>변경할 비밀번호 확인. 위와 동일한지</td>
+										<td><input type="text" name="checkPwd"></td>
 									</tr>
+									<!-- 
 									<tr align="center">
 										<th>생년월일</th>
 										<td><select name="birth" id="">
@@ -218,25 +220,24 @@
 												<option value="30">30일</option>
 												<option value="31">31일</option>
 										</select></td>
+										 -->
 									</tr>
 								</table>
-
-
-
 
 							</div>
 
 							<script>
 					            function updateMem(){
-					              if($()){
-					                /*무엇인가를 적어보자. 비밀번호가 맞지않으면 안된다. 뭐 그런거?*/
+					              if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val){
+					            	  alert("변경할 비밀번호가 일치하지 않습니다.")
+					            	  return false;
 				              			}
 				            	}
 				         	</script>
 
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								<button type="submit" class="ntn btn-warning"
+								<button type="submit" class="btn btn-warning"
 									data-dismiss="modal" onclick="return updateMem();">완료</button>
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">취소</button>
@@ -271,6 +272,15 @@
                 <a href="#">개인정보처리방침</a>
                 <a href="#">쿠키정책</a>
             </div>
+            
+            <script>
+            function validateMember(){
+            	if($("input[name=userPwd]").val() != <%=loginUser.getUserPwd()%>){
+	              alert("회원탈퇴 실패")
+	              return false;  
+	     	 }
+            </script>
+            
             <div id="mypage-an">
                 <p align="center">c 2023 MySNS reserved</p>
             </div>

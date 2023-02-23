@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 /**
  * Servlet implementation class MypageController
@@ -27,8 +29,16 @@ public class MypageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
-		view.forward(request, response);
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("loginUser") == null) { // 비정상접근(로그인 전)
+			session.setAttribute("alertMsg", "로그인 후 이용가능한 서비스입니다.");
+			response.sendRedirect(request.getContextPath());
+		} else { // 로그인 후
+			RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
+			view.forward(request, response);
+		}
+		
 	
 	}
 

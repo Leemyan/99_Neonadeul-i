@@ -108,7 +108,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public Member selectMember(Connection conn, String userId) {
+	public Member selectMember(Connection conn, String email) {
 		Member m = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -118,7 +118,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, userId);
+			pstmt.setString(1, email);
 			
 			rset = pstmt.executeQuery();
 			
@@ -142,7 +142,7 @@ public class MemberDao {
 		return m;
 	}
 	
-	public int updatePwd(Connection conn, String userId, String userPwd, String updatePwd) {
+	public int updatePwd(Connection conn, String email, String userPwd, String updatePwd) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -153,7 +153,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, updatePwd);
-			pstmt.setString(2, userId);
+			pstmt.setString(2, email);
 			pstmt.setString(3, userPwd);
 			
 			result = pstmt.executeUpdate();

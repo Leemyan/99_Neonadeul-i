@@ -14,17 +14,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
+
     <!-- jQuery Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <!-- Custom fonts for this template-->
     <link href="resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+    
     <style>
         /* div{border: 1px solid red;} */
 
@@ -68,15 +69,17 @@
                     aria-expanded="false" >
                     @<%=loginUser.getUserName() %>
                 </button>
-                <div class="dropdown-menu animated--fade-in"
-                    aria-labelledby="dropdownMenuButton" style="z-index: 99;">
-                    <a class="dropdown-item" href="<%=contextPath%>/mypage.me" >마이페이지 </a>
+
+                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton" style="z-index: 99;">
+                    <a class="dropdown-item" href="<%=contextPath%>/mypage.me">마이페이지 </a>
                     
                 </div>
             </div>
+
             <div style="display: inline-block;">
                 <input type="text" style="width: 400px; height: 30px;" id="chat-content">
             </div>
+
             <button type="submit" style="height: 36px;" id="input-chat">보내기</button>
         </div>
         
@@ -86,7 +89,7 @@
             		$.ajax({
             			url:"login.me",
             			data:{input:("#input-chat").val(),
-            			type:"get"
+            			type:"get",
             			success : function(result){
             				$("#board").text(result)
             			},
@@ -124,6 +127,7 @@
             <a href="#">개인정보처리방침</a>
             <a href="#">쿠키정책</a>
         </div>
+        
         <div id="main-root">
             <p align = "center">c 2023 MySNS reserved</p>
         </div>

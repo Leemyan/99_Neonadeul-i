@@ -150,9 +150,10 @@
 					<button type="button">취소</button>
 					<button type="submit">완료</button>
 				</div>
+			</div>
 		</form>
 	</div>
-	</div>
+	
 
 </body>
 </html>

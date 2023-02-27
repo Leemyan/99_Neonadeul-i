@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdminPageController
  */
-@WebServlet("/login.mee")
+@WebServlet("/blogin.me")
 public class BoardInputContoroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

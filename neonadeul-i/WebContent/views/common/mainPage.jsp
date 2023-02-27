@@ -51,15 +51,17 @@
 </head>
 <body id="page-top">
     <div class="wrap-main">
-        <div align="right" id="main-top" class="" >
+        <div align="right" id="main-top">
             <%if(loginUser.getEmail().equals("admin")) {%>
-            <button type="button" onclick="location.href='<%=contextPath%>/admin.op'">관리페이지</button>
+            <button type="button" onclick="admin();">관리페이지</button>
+            <!-- <a href="<%=contextPath%>/admin.op">관리페이지</a> -->
             <%} %>
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>
         <div>
             <input type="image" src="resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
         </div>
+
         <div id="main-an" align="center"><h2>흥미로운 소식을 전해주세요!</h2></div>
 
         <div id="main-input" align="center" >
@@ -84,10 +86,15 @@
         </div>
         
         <script>
+            function admin(){
+            	console.log("123");
+                location.href="<%= contextPath %>/admin.op"
+            }
+
             $(function(){
             	$("#input-chat").click(function(){
             		$.ajax({
-            			url:"login.me",
+            			url:"blogin.me",
             			data:{input:("#input-chat").val(),
             			type:"get",
             			success : function(result){
@@ -114,16 +121,8 @@
             <div id="board" style="height: 353px; border: 1px solid black; " >작성한 내용이 표시 될 공간</div>
         </div>
 
-        <!-- <script>
-            function refresh(){
-                $('#board').load(location.href+' #board');
-                console.log('성공');
-            }
-
-        </script> -->
-
         <div id="main-footer" align="center" style="margin-top: 20px ;">
-            <a href="#">이용약관</a>
+            <a href="<%=contextPath%>/term.bo">이용약관</a>
             <a href="#">개인정보처리방침</a>
             <a href="#">쿠키정책</a>
         </div>

@@ -1,4 +1,4 @@
-package src.com.kh.admin.controller;
+package src.com.kh.notice.controller;
 
 import java.io.IOException;
 
@@ -8,42 +8,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class AdminPageController
+ * Servlet implementation class TermViewController
  */
-@WebServlet("/admin.op")
-public class AdminPageController extends HttpServlet {
+@WebServlet("/cookie.no")
+public class CookieViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminPageController() {
+    public CookieViewController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		
-			if(session.getAttribute("loginUser") == null) { // 로그아웃상태
-				session.setAttribute("alertMsg", "로그인 후 이용해주세요.");
-				response.sendRedirect(request.getContextPath());
-			} else {
-				RequestDispatcher view = request.getRequestDispatcher("views/admin/adminPage.jsp");
-				view.forward(request, response);
-			}
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/notice/cookie.jsp");
+		view.forward(request, response);
+	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

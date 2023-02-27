@@ -53,7 +53,7 @@
     <div class="wrap-main">
         <div align="right" id="main-top">
             <%if(loginUser.getEmail().equals("admin")) {%>
-            <button type="button" onclick="admin();">관리페이지</button>
+            <button type="button" onclick="location.href='<%=contextPath%>/admin.op'">관리페이지</button>
             <!-- <a href="<%=contextPath%>/admin.op">관리페이지</a> -->
             <%} %>
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
@@ -123,9 +123,9 @@
         </div>
 
         <div id="main-footer" align="center" style="margin-top: 20px ;">
-            <a href="<%=contextPath%>/term.bo">이용약관</a>
-            <a href="#">개인정보처리방침</a>
-            <a href="#">쿠키정책</a>
+            <a href="<%=contextPath%>/term.no">이용약관</a>
+            <a href="<%=contextPath%>/privacy.no">개인정보처리방침</a>
+            <a href="<%=contextPath%>/cookie.no">쿠키정책</a>
         </div>
         
         <div id="main-root">

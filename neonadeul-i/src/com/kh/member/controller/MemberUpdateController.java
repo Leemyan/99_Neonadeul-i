@@ -47,6 +47,8 @@ public class MemberUpdateController extends HttpServlet {
 			request.setAttribute("errorMsg", "회원정보 수정에 실패했습니다.");
 			
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			view.forward(request, response);
+			
 		}else { // 성공
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", updateMem);

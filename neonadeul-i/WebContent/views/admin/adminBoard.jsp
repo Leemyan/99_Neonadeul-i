@@ -20,7 +20,7 @@
         <title>너나들이 : MySNS</title>
     
         <!-- Custom fonts for this template-->
-        <link href="resources/vendor/fontawesome-free/css/solid.min.css" rel="stylesheet" type="text/css">
+        <link href="resources/vendor/fontawesome-free/css/sall.min.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
@@ -33,7 +33,7 @@
     <body id="page-top">
     
         <!-- Page Wrapper -->
-        <div id="wrapper" style="position: relative;">
+        <div id="wrapper">
     
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -326,11 +326,11 @@
 
                         <!-- 관리자페이지 가로 나눔막대 -->
                         <hr>
-    
+						
                         <!-- Content Row -->
                         <div class="row" style="margin: auto;">
                              
-                           
+                           관리자페이지 게시물관리페이지
                             
                         </div>
     
@@ -372,7 +372,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">로그인 페이지로 돌아가시겠습니까?</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="<%=contextPath%>/logout.me">Logout</a>
@@ -392,11 +392,11 @@
         <script src="resources/js/sb-admin-2.min.js"></script>
     
         <!-- Page level plugins -->
-        <!-- <script src="resources/vendor/chart.js/Chart.min.js"></script> -->
+        <script src="resources/vendor/chart.js/Chart.min.js"></script>
     
         <!-- Page level custom scripts -->
-        <!-- <script src="resources/js/demo/chart-area-demo.js"></script>
-        <script src="resources/js/demo/chart-pie-demo.js"></script> -->
+        <script src="resources/js/demo/chart-area-demo.js"></script>
+        <script src="resources/js/demo/chart-pie-demo.js"></script>
     
     </body>
     

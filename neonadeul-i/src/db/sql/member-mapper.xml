@@ -38,7 +38,7 @@
       ,  SYSDATE
       ,  SYSDATE
       ,  DEFAULT
-      ,  DEFAULT
+      ,  2
       )
 	</entry>
 	

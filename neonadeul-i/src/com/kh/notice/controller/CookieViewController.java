@@ -1,4 +1,4 @@
-package src.com.kh.notice.controller;
+package com.kh.notice.controller;
 
 import java.io.IOException;
 

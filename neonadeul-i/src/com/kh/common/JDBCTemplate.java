@@ -1,4 +1,4 @@
-package src.com.kh.common;
+package com.kh.common;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class JDBCTemplate {
 		Properties prop = new Properties();
 		
 		// 읽어들이고자 하는 driver.properties 파일의 물리적인 경로
-		String filePath = JDBCTemplate.class.getResource("/src/db/driver/driver.properties").getPath();
+		String filePath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
 		// "C:/05_server-workspace2/jspProject/WebContent/classes/db/driver/driver.properties"
 		
 		try {

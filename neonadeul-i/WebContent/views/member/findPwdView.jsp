@@ -1,4 +1,4 @@
-<%@page import="src.com.kh.member.model.vo.Member"%>
+<%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -87,7 +87,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:#f58b34;"><img src="/resources/img/rabbit_logo.png"/></h2>
+			<h2 class="card-title" style="color:#f58b34;"><img src="resources/image/cat/cat_2022.png" width="60px"/>비밀번호 변경</h2>
 		</div>
         
 		<div class="card-body">

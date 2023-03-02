@@ -1,4 +1,4 @@
-package src.com.kh.member.model.dao;
+package com.kh.member.model.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,15 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static src.com.kh.common.JDBCTemplate.*;
-import src.com.kh.member.model.vo.Member;
+import static com.kh.common.JDBCTemplate.*;
+import com.kh.member.model.vo.Member;
 
 public class MemberDao {
 	
 	private Properties prop = new Properties();
 	
 	public MemberDao() {
-		String filePath = MemberDao.class.getResource("/src/db/sql/member-mapper.xml").getPath();
+		String filePath = MemberDao.class.getResource("/db/sql/member-mapper.xml").getPath();
 		try {
 			prop.loadFromXML(new FileInputStream(filePath));
 		} catch (IOException e) {

@@ -1,4 +1,4 @@
-package src.com.kh.member.controller;
+package com.kh.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import src.com.kh.member.model.service.MemberService;
-import src.com.kh.member.model.vo.Member;
+import com.kh.member.model.service.MemberService;
+import com.kh.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberUpdatePwdController
@@ -23,7 +23,6 @@ public class MemberUpdatePwdController extends HttpServlet {
      */
     public MemberUpdatePwdController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -51,7 +50,6 @@ public class MemberUpdatePwdController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

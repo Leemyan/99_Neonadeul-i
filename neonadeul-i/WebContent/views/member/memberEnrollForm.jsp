@@ -143,7 +143,7 @@
 				-->
 				<div style="height: 37.5px;">
 					<!-- 체크됐을때 완료버튼 활성화하기 -->
-					<input type="checkbox"> <a href="#">이용약관</a> 을 읽었으며,
+					<input type="checkbox"> <a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며,
 					동의합니다.
 				</div>
 				<div align="center">

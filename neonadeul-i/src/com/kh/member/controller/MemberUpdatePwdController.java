@@ -42,8 +42,8 @@ public class MemberUpdatePwdController extends HttpServlet {
 		}else {
 			session.setAttribute("alertMsg", "성공적으로 비밀번호가 변경되었습니다.");
 			session.setAttribute("loginUser", updateMem);
-			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		}
+		response.sendRedirect(request.getContextPath() + "/myPage.me");
 	}
 
 	/**

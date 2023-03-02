@@ -157,6 +157,7 @@ public class MemberDao {
 			pstmt.setString(3, userPwd);
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

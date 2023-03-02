@@ -71,7 +71,7 @@
 	
 	<entry key="deleteMember">
 	UPDATE MEMBER
-	 SET MEMBERSHIP = '3',
+	 SET MEMBERSHIP = 3,
 		 LEAVADATE = SYSDATE
 	WHERE EMAIL = ?
 	 AND USERPWD = ?

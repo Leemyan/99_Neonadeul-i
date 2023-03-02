@@ -56,6 +56,12 @@
 		
 	</head>
 	<body>
+	
+	<%
+		String email = loginUser.getEmail();
+		String userName = loginUser.getUserName();
+	
+	%>
     	<div class="wrap">
         	<div id="mypage">
 				<div id="mypage-top">
@@ -101,9 +107,9 @@
 
 							<!-- Modal body -->
 							<div class="modal-body" align="center">
-								<%-- <input type="hidden" name="userId" value="<%=userId%>"> --%>
 							
 								<form action="<%=contextPath%>/updatePwd.me" method="post">
+									<input type="hidden" name="userId" value="<%=email%>">
 									<table>
 										<tr align="center">
 											<th>이름</th>
@@ -117,15 +123,15 @@
 									
 										<tr align="center">
 											<th>현재 비밀번호</th>
-											<td><input type="text" id="userPwd" name="userPwd" required></td>
+											<td><input type="password" id="userPwd" name="userPwd" required></td>
 										</tr>
 										<tr align="center">
 											<th>변경할 비밀번호</th>
-											<td><input type="text" id="updatePwd" name="updatePwd" required></td>
+											<td><input type="password" id="updatePwd" name="updatePwd" required></td>
 										</tr>
 										<tr>
 											<th>변경할 비밀번호 확인</th>
-											<td><input type="text" id="checkPwd" name="checkPwd" required></td>
+											<td><input type="password" id="checkPwd" name="checkPwd" required></td>
 										</tr>
 									</table>
 								
@@ -140,10 +146,6 @@
 									</div>
 								</form>
 							</div>
-						</div>
-					</div>
-				</div>
-				
 					<script>
 						function updateMem(){
 							if($("#updatePwd").val() != $("#checkPwd").val()){
@@ -155,9 +157,15 @@
 								
 								} else{
 									alert("변경할 비밀번호가 일치합니다. 확인!")
+									console.log((updatePwd).val);
+									console.log((checkPwd).val);
 								}
 						}
 					</script>
+				
+						</div>
+					</div>
+				</div>
 				
 			
 			
@@ -177,7 +185,7 @@
 							<form action="<%= contextPath %>/delete.me" method="post">
 							<b>탈퇴 후 복구가 불가능합니다. <br>정말로 탈퇴하시겠습니까?</b> <br><br>
 		
-							비밀번호 : <input type="password" id="userPwd" name="userPwd" required> <br><br>
+							비밀번호 : <input type="password" name="userPwd" required> <br><br>
 							<button type="submit" class="btn btn-sm btn-danger" onclick="return validateMember();">탈퇴하기</button>
 							</form>
 							<div id="mypage-foot" align="center" style="padding: 10px;">

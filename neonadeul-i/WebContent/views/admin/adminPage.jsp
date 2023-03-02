@@ -125,7 +125,7 @@
     
                 <!-- Sidebar Message -->
                 <div class="sidebar-card d-none d-lg-flex">
-                    <img class="sidebar-card-illustration mb-2" src="resources/image/scrap/undraw_rocket.svg" alt="...">
+                    <img class="sidebar-card-illustration mb-2" src="resources/image/cat/cat.png" width="50px" height="50px" alt="...">
                     <p class="text-center mb-2"><strong>너나들이</strong></p>
                     
                 </div>
@@ -201,19 +201,19 @@
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <!-- <a class="dropdown-item" href="#">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
+                                    </a> -->
+                                    <a class="dropdown-item" href="<%=contextPath%>">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
-                                    </a>
-                                    <div class="dropdown-divider"></div>
+                                        HOME
+                                    </a> 
+                                    <div class="dropdown-divider"></div> 
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout

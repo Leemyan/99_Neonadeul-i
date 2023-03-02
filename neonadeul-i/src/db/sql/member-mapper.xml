@@ -76,4 +76,18 @@
 	WHERE EMAIL = ?
 	 AND USERPWD = ?
 	</entry>
+	
+	<entry key="findId">
+	SELECT EMAIL 
+		FROM MEMBER
+    WHERE USERNAME = ?
+	</entry>
+	
+	<entry key="findPwd">
+	UPDATE MEMBER
+		SET USERPWD = ?
+	WHERE EMAIL = ?
+	AND USERNAME = ?
+	</entry>
+	
 </properties>

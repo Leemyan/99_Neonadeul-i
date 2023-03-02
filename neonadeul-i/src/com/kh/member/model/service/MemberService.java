@@ -80,12 +80,22 @@ public class MemberService {
 		
 		if(result > 0) {
 			commit(conn);
+//			deleteMem = "";
 		}else {
 			rollback(conn);
 		}
 		close(conn);
 		
 		return deleteMem;
+	}
+	
+	public String findId(String userName) {
+		Connection conn = getConnection();
+		
+		String findId = new MemberDao().findId(conn, userName);
+		
+		close(conn);
+		return findId;
 	}
 
 }

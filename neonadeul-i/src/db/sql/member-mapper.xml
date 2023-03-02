@@ -84,8 +84,8 @@
 	</entry>
 	
 	<entry key="findPwd">
-	UPDATE MEMBER
-		SET USERPWD = ?
+	SELECT USERPWD
+		FROM MEMBER
 	WHERE EMAIL = ?
 	AND USERNAME = ?
 	</entry>

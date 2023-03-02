@@ -213,8 +213,8 @@ public class MemberDao {
 		return id;
 	}
 	
-	public String changePwd(Connection conn, String inputPwd, String userName, String email) {
-		String pwd = null;
+	public int findPwd(Connection conn, String inputPwd, String userName, String email) {
+		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		String sql = prop.getProperty("findPwd");
@@ -225,9 +225,14 @@ public class MemberDao {
 			pstmt.setString(1, inputPwd);
 			pstmt.setString(2, email);
 			pstmt.setString(3, userName);
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
+		return result;
 		
 	}
 

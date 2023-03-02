@@ -97,5 +97,21 @@ public class MemberService {
 		close(conn);
 		return findId;
 	}
+	
+	public Member findPwd(String inputPwd, String userName, String email) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDao().findPwd(conn, inputPwd, userName, email);
+		Member updatePwd = null;
+		
+		if(result > 0) { // 성공
+			commit(conn);
+			updatePwd = new MemberDao().selectMember(conn, email);
+		} else { // 실패
+			rollback(conn);
+		}
+		close(conn);
+		return updatePwd;
+	}
 
 }

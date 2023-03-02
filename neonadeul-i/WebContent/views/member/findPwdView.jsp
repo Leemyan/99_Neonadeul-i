@@ -91,11 +91,11 @@
 		</div>
         
 		<div class="card-body">
-      <form action="resetPw" class="form-signin" method="POST">
+      <form action="<%=contextPath %>/change.pwd" class="form-signin" method="POST">
       <input type="hidden" name="member_id" value= <%= finduid %>>
-      <p class="check" id="check">내 아이디 :  <%= loginUser.getEmail() %> </p><br/>
-        <input type="passwor" name="pw" id="pw" class="form-control" placeholder="비밀번호" required ><BR>
-        <input type="passwor" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
+      <p class="check" id="check">내 아이디 :  <%-- <%= loginUser.getEmail() %> --%> </p><br/>
+        <input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호" required ><BR>
+        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
         <p class="check" id="check2">${resetpw_check}</p><br/>
         <button type="button"  id="btn-Yes" onclick="regist()" class="btn btn-lg btn-primary btn-block">비밀번호 재설정</button>
       </form>

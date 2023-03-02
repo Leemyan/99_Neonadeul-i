@@ -32,19 +32,10 @@ public class FindIdViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		
-		String userName = request.getParameter("userName");
-		
-		Member findId = new MemberService().findId(userName);
-		
-		if(findId == null) { // 조회실패
-			request.setAttribute("errorMsg", "아이디찾기 실패! 아직 회원이 아니시라면 가입 후 시도해주세요.");
-			
-		} else { // 조회성공
 			RequestDispatcher view = request.getRequestDispatcher("views/member/findIdView.jsp");
 			view.forward(request, response);
-		}
+		
 		
 	}
 

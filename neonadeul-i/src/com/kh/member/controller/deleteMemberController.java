@@ -44,6 +44,7 @@ public class deleteMemberController extends HttpServlet {
 		
 		if(deleteMem == null) {
 			session.setAttribute("alertMsg", "성공적으로 탈퇴했습니다. 그동안 이용해주셔서 감사합니다.");
+			
 		} else {
 			System.out.println("회원탈퇴에 실패했습니다.");
 		}

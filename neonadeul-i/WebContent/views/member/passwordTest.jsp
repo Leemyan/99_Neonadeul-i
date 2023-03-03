@@ -50,12 +50,22 @@
 
 									<!-- Modal footer -->
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-warning" data-dismiss="modal" >
+										<button type="submit" class="btn btn-warning" data-dismiss="modal" onclick="return validatePwd();">
 											완료
 										</button>
 										<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="location.href='<%=contextPath%>/mypage.me';">취소</button>
 									</div>
 								</form>
+								<script>
+								function validatePwd(){
+									if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+									alert("비밀번호 변경 실패(불일치)")
+									return false;  
+									} else{
+										alert("비밀번호 변경 성공")
+									}
+								}
+								</script>
 							</div>
 
 

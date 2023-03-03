@@ -3,10 +3,10 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
+
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
-
 %>
 <!DOCTYPE html>
 <html>
@@ -39,6 +39,7 @@
 			cursor: pointer;
 		}
         
+		.box.on{color: #999;}
 
     </style>
 <!-- jquery파일 종합응용에서 복붙함 -->
@@ -138,12 +139,10 @@
 					<button type="button">중복확인</button>
 				</div>
 				<div style="height: 37.5px;">
-					<input type="password" name="userPwd" placeholder="비밀번호를 입력하세요"
-						style="width: 250px;">
+					<input type="password" name="userPwd" placeholder="비밀번호를 입력하세요" style="width: 250px;">
 				</div>
 				<div>
-					<input type="password" placeholder="비밀번호를 다시 입력하세요"
-						style="width: 250px;">
+					<input type="password" placeholder="비밀번호를 다시 입력하세요" style="width: 250px;">
 				</div>
 				<div style="height: 37.5px;">비밀번호가 일치/불일치 합니다(확인문구)</div>
 				<!--  
@@ -196,25 +195,29 @@
 				<div style="height: 37.5px;">
 					<br>
 					<!-- 체크됐을때 완료버튼 활성화하기 -->
-					<input type="checkbox" id="checkbox1" onclick="box(this);"> <a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며,
-					동의합니다.
+					<input type="checkbox" id="chk"> 
+					<a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며, 동의합니다.
 
 					<script>
-						function box(checkbox1){
-							const textbox_elem = document.getElementById("enroll0");
-
-							textbox_elem.disabled = checkbox1.checked ? false : true;
-
-							if(){
-								
-							}
-						}
+						$(".box button").attr("disabled", true);
+							$("#chk").on('click', function(){
+								var chk = $("input:checkbox[id='chk']").is(":checked");
+								if(chk==true){
+									$(".box button").removeAttr('disabled');
+									$(".box").removeClass("on")
+								} else {
+									$(".box button").attr("disabled", true);
+									$(".box").addClass("on")
+								}
+							});
+							
+						
 					</script>
 				</div>
-				<div align="center">
+				<div align="center" class="box on">
 					<br><br>
-					<button type="button">취소</button>
-					<button type="submit" id="enroll0">완료</button>
+					<a href="<%=contextPath%>" class="btn btn-danger">뒤로가기</a>
+					<button type="submit" class="btn btn-warning" disabled>완료</button>
 				</div>
 			</div>
 		</form>

@@ -192,15 +192,17 @@
 							<button type="submit" class="btn btn-sm btn-danger" onclick="return validateMember();">탈퇴하기</button>
 							</form>
 							<div id="mypage-foot" align="center" style="padding: 10px;">
-								<a href="#">이용약관</a>
-								<a href="#">개인정보처리방침</a>
-								<a href="#">쿠키정책</a>
+								<a href="<%=contextPath%>/term.no">이용약관</a>
+								<a href="<%=contextPath%>/privacy.no">개인정보처리방침</a>
+								<a href="<%=contextPath%>/cookie.no">쿠키정책</a>
 							</div>
 						
 								<script>
 								function validateMember(){
 									if($("input[name=userPwd]").val() != $("input[name=checkPwd]").val()){
 									alert("회원탈퇴 실패")
+									console.log("회원탈퇴 탔다!")
+									console.log(userPwd.val())
 									return false;  
 									}
 								}

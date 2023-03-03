@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contextPath  = request.getContextPath();
-
+	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	String email = loginUser.getEmail();
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>   
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,7 +47,7 @@
 	}
 
     #btn-Yes{
-        background-color: #e4932b;
+        background-color: #6667AB;
         border: none;
     }
 	
@@ -67,7 +70,7 @@
 
 
     a{ 
-    	color: #f58b34; text-decoration: none; 
+    	color: #6667AB; text-decoration: none; 
     }
 
     .links{
@@ -87,7 +90,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:#f58b34;"><img src="resources/image/cat/cat_2022.png" width="60px"/>비밀번호 변경</h2>
+			<h2 class="card-title" style="color:#6667AB;"><img src="resources/image/cat/cat_2022.png" width="60px"/>비밀번호 변경</h2>
 		</div>
         
 		<div class="card-body">

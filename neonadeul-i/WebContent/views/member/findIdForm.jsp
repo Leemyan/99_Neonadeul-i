@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contextPath  = request.getContextPath();
-
+	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	String email = loginUser.getEmail();
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,7 +47,7 @@
 	}
 
     #btn-Yes{
-        background-color: #2b37db;
+        background-color: #6667AB;
         border: none;
     }
 	
@@ -79,7 +82,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:hsl(246, 48%, 47%);"><img src="../../resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>
+			<h2 class="card-title" style="color:#6667AB;"><img src="../../resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>
 		</div>
         
 		<div class="card-body">

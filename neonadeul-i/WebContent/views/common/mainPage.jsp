@@ -3,9 +3,12 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
-	// board 써라 못 가져다 쓴다.
-    Member loginUser = (Member)session.getAttribute("loginUser");
- %>
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
+%>
  
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +57,6 @@
         <div align="right" id="main-top">
             <%if(loginUser.getEmail().equals("admin")) {%>
             <button type="button" onclick="location.href='<%=contextPath%>/admin.op'">관리페이지</button>
-            <!-- <a href="<%=contextPath%>/admin.op">관리페이지</a> -->
             <%} %>
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>

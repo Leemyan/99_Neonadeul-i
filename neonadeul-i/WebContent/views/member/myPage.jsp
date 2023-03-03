@@ -60,7 +60,6 @@
 	<%
 		String email = loginUser.getEmail();
 		String userName = loginUser.getUserName();
-	
 	%>
     	<div class="wrap">
         	<div id="mypage">
@@ -86,9 +85,10 @@
 					
 				</div>
 
-				<div class="term">(빈공간)</div>
+				<div class="term"></div>
 
 				<div id="mypage-outmem" align="right" >
+					<button type="button" class="btn btn-sm btn-primary" onclick="history.back();">뒤로가기</button>
 					<button type="button" class="btn btn-sm btn-warning" id="update-mem" data-toggle="modal" data-target="#inputPwdModal">정보수정</button>
 					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal">회원탈퇴</button>
 				</div>
@@ -111,42 +111,45 @@
 								<form action="<%=contextPath%>/updatePwd.me" method="post">
 									<input type="hidden" name="userId" value="<%=email%>">
 									<table>
-										<tr align="center">
+										 <tr align="center">
 											<th>이름</th>
 											<td><%=loginUser.getUserName()%></td>
 										</tr>
 										<tr align="center">
 											<th>이메일</th>
 											<td><%=loginUser.getEmail()%></td>
-										</tr>
+										</tr> 
+										
 									
-									
+									<!-- 
 										<tr align="center">
 											<th>현재 비밀번호</th>
-											<td><input type="password" id="userPwd" name="userPwd" required></td>
+											<td><input type="password" id="userPwd" name="userPwd" required autoComplete="off"></td>
 										</tr>
 										<tr align="center">
 											<th>변경할 비밀번호</th>
-											<td><input type="password" id="updatePwd" name="updatePwd" required></td>
+											<td><input type="password" id="updatePwd" name="updatePwd" required autoComplete="off"></td>
 										</tr>
 										<tr>
 											<th>변경할 비밀번호 확인</th>
-											<td><input type="password" id="checkPwd" name="checkPwd" required></td>
-										</tr>
+											<td><input type="password" id="checkPwd" name="checkPwd" required autoComplete="off"></td>
+										</tr> --> <!--  별도 생성 -->
+										
 									</table>
 								
 							
 
 									<!-- Modal footer -->
 									<div class="modal-footer">
-										<button type="submit" class="btn btn-warning" data-dismiss="modal" onclick="return updateMem();">
-											완료
+										<button type="submit" class="btn btn-warning" data-dismiss="modal" onclick="location.href='<%=contextPath%>/pUpdate.me'">
+											비밀번호 변경
 										</button>
-										<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+										
+										<button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
 									</div>
 								</form>
 							</div>
-					<script>
+					<!-- <script>
 						function updateMem(){
 							if($("#updatePwd").val() != $("#checkPwd").val()){
 								alert("변경할 비밀번호가 일치하지 않습니다.")
@@ -157,11 +160,11 @@
 								
 								} else{
 									alert("변경할 비밀번호가 일치합니다. 확인!")
-									console.log((updatePwd).val);
-									console.log((checkPwd).val);
+									console.log(updatePwd);
+									console.log(checkPwd);
 								}
 						}
-					</script>
+					</script> -->
 				
 						</div>
 					</div>

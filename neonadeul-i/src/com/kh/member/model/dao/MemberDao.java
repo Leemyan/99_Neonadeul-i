@@ -143,6 +143,7 @@ public class MemberDao {
 	}
 	
 	public int updatePwd(Connection conn, String email, String userPwd, String updatePwd) {
+		System.out.println("dao 탔다.");
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -156,6 +157,11 @@ public class MemberDao {
 			pstmt.setString(2, email);
 			pstmt.setString(3, userPwd);
 			
+			/* Dao 타는지 확인했다
+			 * System.out.println(updatePwd); System.out.println(email);
+			 * System.out.println(userPwd);
+			 */
+			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -163,6 +169,8 @@ public class MemberDao {
 		} finally {
 			close(pstmt);
 		}
+		// 결과값 확인함
+		/* System.out.println(result + "결과(result)값 확인"); */
 		return result;
 	}
 	

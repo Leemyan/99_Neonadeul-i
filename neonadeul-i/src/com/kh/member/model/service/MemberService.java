@@ -59,6 +59,7 @@ public class MemberService {
 	}
 	
 	public Member updatePwd(String email, String userPwd, String updatePwd) {
+		System.out.println("여기도?");
 		Connection conn = getConnection();
 		int result = new MemberDao().updatePwd(conn, email, userPwd, updatePwd);
 		Member updateMem = null;

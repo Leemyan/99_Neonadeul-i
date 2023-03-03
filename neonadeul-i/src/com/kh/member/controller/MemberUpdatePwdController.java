@@ -29,7 +29,9 @@ public class MemberUpdatePwdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("이거탔나??");
+		request.setCharacterEncoding("UTF-8");
+		
+		/* System.out.println("이거탔나??"); 컨트롤러 잘 들어왔는지 입구체크 */
 		String email = request.getParameter("email");
 		String userPwd = request.getParameter("userPwd");
 		String updatePwd = request.getParameter("updatePwd");
@@ -38,12 +40,15 @@ public class MemberUpdatePwdController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if(updateMem == null) {
+			System.out.println("변경실패");
 			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");
 		}else {
+			System.out.println("변경성공");
 			session.setAttribute("alertMsg", "성공적으로 비밀번호가 변경되었습니다.");
 			session.setAttribute("loginUser", updateMem);
 		}
-		response.sendRedirect(request.getContextPath() + "/myPage.me");
+		
+		response.sendRedirect(request.getContextPath() + "/mypage.me");
 	}
 
 	/**

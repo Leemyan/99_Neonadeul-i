@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contextPath  = request.getContextPath();
-
+	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	String email = loginUser.getEmail();
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>      
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,7 +47,7 @@
 	}
 
     #btn-Yes{
-        background-color: #e4932b;
+        background-color: #6667AB;
         border: none;
     }
 	
@@ -64,7 +67,7 @@
 
 
     a{ 
-    	color: #f58b34; text-decoration: none; 
+    	color: #6667AB; text-decoration: none; 
     }
 
     .links{
@@ -95,7 +98,7 @@
 
         <p class="checks" id="checks">${findpw_checkf}</p><br/>
 
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비 밀 번 호 찾기</button>
       </form>
       
 		</div>

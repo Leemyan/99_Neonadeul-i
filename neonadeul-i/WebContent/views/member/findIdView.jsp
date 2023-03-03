@@ -2,9 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String contextPath  = request.getContextPath();
-
+	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	String email = loginUser.getEmail();
+	
+	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>    
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,7 +47,7 @@
 	}
 
     #btn-Yes{
-        background-color: #2b37db;
+        background-color: #6667AB;
         border: none;
     }
 	

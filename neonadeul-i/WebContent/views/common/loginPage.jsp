@@ -3,15 +3,17 @@
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
-
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	
+	
 	String alertMsg = (String)session.getAttribute("alertMsg");
+
 %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
+  
   <title>Insert title here</title>
 
   <style>
@@ -134,7 +136,7 @@
             
                     <!-- Modal body -->
                     <div class="modal-body" align="center">
-                      <iframe src="https://service.dongledongle.com/MySNS-semi" frameborder="0" width="100%" height="500"></iframe>
+                      <iframe src="https://service.dongledongle.com/MySNS-semi"  width="100%" height="500"></iframe>
                       
                     </div>
                     
@@ -159,9 +161,10 @@
       </div>
         <p align = "center">c 2023 MySNS reserved</p> 
     </div>
-    
+   </div> 
     <!--const userId = document.getElementByName("userId") 안되니 봉인  -->
-
+	</div>
+	</div>
     
     
 </body>

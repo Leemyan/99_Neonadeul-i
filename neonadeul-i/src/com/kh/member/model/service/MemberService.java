@@ -74,19 +74,21 @@ public class MemberService {
 		return updateMem;
 	}
 	
-	public Member deleteMember(Member m) {
+	public Member deleteMember(String email, String userpwd) {
+		System.out.println("삭제 서비스도 탐. 끼야호");
 		Connection conn = getConnection();
-		int result = new MemberDao().deleteMember(conn, m);
+		int result = new MemberDao().deleteMember(conn, email, userpwd);
 		Member deleteMem = null;
-		
-		if(result > 0) {
+		System.out.println("result값"+result);
+		if(result > 0) { // 성공
 			commit(conn);
-//			deleteMem = "";
-		}else {
+			deleteMem = new MemberDao().selectMember(conn, email);
+			
+		}else { // 실패
 			rollback(conn);
 		}
 		close(conn);
-		
+		System.out.println(" service단 delteMem : " + deleteMem);
 		return deleteMem;
 	}
 	

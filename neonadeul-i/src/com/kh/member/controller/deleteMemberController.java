@@ -27,26 +27,32 @@ public class deleteMemberController extends HttpServlet {
      */
     public deleteMemberController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("컨트롤러 탐. 야호");
 		String email = request.getParameter("email");
 		String userpwd = request.getParameter("userpwd");
 		
-		Member m = new Member(email, userpwd);
 		
-		Member deleteMem = new MemberService().deleteMember(m);
+		
+		Member deleteMem = new MemberService().deleteMember(email, userpwd);
 		HttpSession session = request.getSession();
+		System.out.println("컨트롤러 deleteMem = " + deleteMem);
 		
 		if(deleteMem == null) {
-			session.setAttribute("alertMsg", "성공적으로 탈퇴했습니다. 그동안 이용해주셔서 감사합니다.");
+			System.out.println("탈퇴실패");
+			System.out.println("회원탈퇴에 실패했습니다.");
+			response.sendRedirect(request.getContextPath() + "/mypage.me");
 			
 		} else {
-			System.out.println("회원탈퇴에 실패했습니다.");
+			System.out.println("탈퇴성공");
+			session.setAttribute("alertMsg", "성공적으로 탈퇴했습니다. 그동안 이용해주셔서 감사합니다.");
+			response.sendRedirect(request.getContextPath());
+			
 		}
 	}
 	
@@ -55,7 +61,6 @@ public class deleteMemberController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -5,9 +5,7 @@
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	
-	
 	String alertMsg = (String)session.getAttribute("alertMsg");
-
 %>
  
 <!DOCTYPE html>
@@ -53,6 +51,12 @@
     </style>
 </head>
 <body id="page-top">
+	<% if(alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+	<% } %>
     <div class="wrap-main">
         <div align="right" id="main-top">
             <%if(loginUser.getEmail().equals("admin")) {%>

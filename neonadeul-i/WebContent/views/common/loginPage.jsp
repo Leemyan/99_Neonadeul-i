@@ -56,6 +56,12 @@
 </head>
 <body>
   <div id="wrap">
+  	<% if(alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+	<% } %>
     <div id="wrapDiv">
     
       <div id="login_top">

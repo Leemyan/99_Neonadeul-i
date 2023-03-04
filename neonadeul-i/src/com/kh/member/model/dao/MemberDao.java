@@ -174,7 +174,8 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int deleteMember(Connection conn, Member m) {
+	public int deleteMember(Connection conn, String email, String userpwd) {
+		System.out.println("Dao도 탈래탈래");
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -183,8 +184,11 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, m.getEmail());
-			pstmt.setString(2, m.getUserPwd());
+			pstmt.setString(1, email);
+			pstmt.setString(2, userpwd);
+			
+			System.out.println("email : " + email);
+			System.out.println("userpwd : " + userpwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -192,6 +196,7 @@ public class MemberDao {
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("result : " + result);
 		return result;
 	}
 	

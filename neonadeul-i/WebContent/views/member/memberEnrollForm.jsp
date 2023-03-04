@@ -60,6 +60,12 @@
 <body>
 
 	<div id="wrap-me1">
+		<% if(alertMsg != null) { %>
+			<script>
+				alert("<%= alertMsg %>");
+			</script>
+			<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+		<% } %>
 		<form action="<%=contextPath %>/insert.me" method="post">
 			<div id="mem-top"
 				style="background-color: #6667AB; color: beige; height: 37.5px; line-height: 37.5px;"

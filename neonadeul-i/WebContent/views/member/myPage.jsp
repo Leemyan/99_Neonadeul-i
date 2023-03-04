@@ -56,12 +56,26 @@
 		
 	</head>
 	<body>
+		<% if(alertMsg != null) { %>
+			<script>
+				alert("<%= alertMsg %>");
+			</script>
+			<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+		<% } %>
 	
 	<%
 		String email = loginUser.getEmail();
 		String userName = loginUser.getUserName();
+		String userPwd = loginUser.getUserPwd();
 	%>
     	<div class="wrap">
+   			<% if(alertMsg != null) { %>
+				<script>
+					alert("<%= alertMsg %>");
+				</script>
+				<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+			<% } %>
+			
         	<div id="mypage">
 				<div id="mypage-top">
 					<img src="resources/image/cat/cat_2022.png" alt="cat" width="30px" height="30px">
@@ -186,6 +200,8 @@
 						<!-- Modal body -->
 						<div class="modal-body" align="center">
 							<form action="<%= contextPath %>/delete.me" method="post">
+							<input type="hidden" name="email" value="<%=email%>">
+							<input type="hidden" name="userpwd" value="<%=userPwd%>">
 							<b>탈퇴 후 복구가 불가능합니다. <br>정말로 탈퇴하시겠습니까?</b> <br><br>
 		
 							비밀번호 : <input type="password" name="userPwd" required> <br><br>

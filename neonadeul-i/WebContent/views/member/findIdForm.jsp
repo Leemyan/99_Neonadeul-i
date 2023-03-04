@@ -80,6 +80,12 @@
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 
 	<div class="card align-middle" style="width:25rem;">
+		<% if(alertMsg != null) { %>
+	<script>
+		alert("<%= alertMsg %>");
+	</script>
+	<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+	<% } %>
 		<div class="card-title" style="margin-top:30px;">
             
 			<h2 class="card-title" style="color:#6667AB;"><img src="../../resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>

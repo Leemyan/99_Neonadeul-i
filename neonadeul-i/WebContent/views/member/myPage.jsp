@@ -215,7 +215,7 @@
 								<script>
 								function validateMember(){
 									if($("input[name=userPwd]").val() != $("input[name=checkPwd]").val()){
-									alert("회원탈퇴 실패")
+									//alert("회원탈퇴 실패")
 									console.log("회원탈퇴 탔다!")
 									console.log(userPwd.val())
 									return false;  

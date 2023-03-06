@@ -57,6 +57,9 @@
 	</script>
 	<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
 	<% } %>
+	<% if(loginUser.getMembership() == 3) {%>
+		<h1 align="center">탈퇴회원입니다. 이 창이 보이시면 문의부탁드립니다</h1>
+	<% } %>
     <div class="wrap-main">
         <div align="right" id="main-top">
             <%if(loginUser.getEmail().equals("admin")) {%>
@@ -65,7 +68,7 @@
         	<button type="button" style="margin-top:10px; margin-right: 5px;" onclick="location.href='<%=contextPath%>/logout.me'">로그아웃</button>
         </div>
         <div>
-            <input type="image" src="resources/image/cat/cat_2022.png" width="30px" height="30px" alt="cat" id="main-logo">너나들이::Home
+            <input type="image" src="resources/image/cat/cat_2022.png" width="50px" height="50px" alt="cat" id="main-logo">너나들이::Home
         </div>
 
         <div id="main-an" align="center"><h2>흥미로운 소식을 전해주세요!</h2></div>

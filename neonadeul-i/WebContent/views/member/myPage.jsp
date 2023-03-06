@@ -67,6 +67,7 @@
 		String email = loginUser.getEmail();
 		String userName = loginUser.getUserName();
 		String userPwd = loginUser.getUserPwd();
+		String phone = loginUser.getPhone();
 	%>
     	<div class="wrap">
    			<% if(alertMsg != null) { %>
@@ -133,7 +134,10 @@
 											<th>이메일</th>
 											<td><%=loginUser.getEmail()%></td>
 										</tr> 
-										
+										<tr>
+											<th>전화번호</th>
+											<td><%=loginUser.getPhone()%></td>
+										</tr>
 									
 									<!-- 
 										<tr align="center">

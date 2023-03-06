@@ -47,6 +47,7 @@ public class MemberDao {
 							   rset.getString("email"),
 							   rset.getString("userpwd"),
 							   rset.getDate("birth"),
+							   rset.getString("phone"),
 							   rset.getDate("enrolldate"),
 							   rset.getDate("leavedate"),
 							   rset.getInt("membership"));
@@ -73,7 +74,7 @@ public class MemberDao {
 			pstmt.setString(1, m.getUserName());
 			pstmt.setString(2, m.getEmail());
 			pstmt.setString(3, m.getUserPwd());
-			//pstmt.setDate(4, m.getBirth());
+			pstmt.setString(4, m.getPhone());
 			
 			result = pstmt.executeUpdate();
 			
@@ -128,6 +129,7 @@ public class MemberDao {
 							   rset.getString("email"),
 							   rset.getString("userpwd"),
 							   rset.getDate("birth"),
+							   rset.getString("phone"),
 							   rset.getDate("enrolldate"),
 							   rset.getDate("leavedate"),
 							   rset.getInt("membership"));

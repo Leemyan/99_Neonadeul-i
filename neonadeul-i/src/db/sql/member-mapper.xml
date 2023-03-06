@@ -7,6 +7,7 @@
 		, USERNAME
 		, EMAIL
 		, USERPWD
+		, PHONE
 		, BIRTH
 		, ENROLLDATE
 		, LEAVEDATE
@@ -25,6 +26,7 @@
 	 , EMAIL
 	 , USERPWD
 	 , BIRTH
+	 , PHONE
 	 , ENROLLDATE
 	 , LEAVEDATE
 	 , MEMBERSHIP
@@ -36,6 +38,7 @@
       ,  ?
       ,  ?
       ,  SYSDATE
+      ,  ?
       ,  SYSDATE
       ,  DEFAULT
       ,  2
@@ -55,6 +58,7 @@
 	  , EMAIL
 	  , USERPWD
 	  , BIRTH
+	  , PHONE
 	  , ENROLLDATE
 	  , LEAVEDATE
 	  , MEMBERSHIP
@@ -81,6 +85,7 @@
 	SELECT EMAIL 
 		FROM MEMBER
     WHERE USERNAME = ?
+    AND PHONE = ?
 	</entry>
 	
 	<entry key="findPwd">

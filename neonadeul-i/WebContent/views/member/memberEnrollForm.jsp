@@ -58,6 +58,47 @@
 <!-- bootstrap -> get started -> copy & paste -->
 </head>
 <body>
+	<script>
+		function idCheck(){
+			window.open("/views/member/idCheck.jsp","_blank","width=300px height=100px");
+		}
+
+		function checkValue(){
+			var form = document.userInfo;
+
+			if(!form.name.value){
+				alert("이름을 입력하세요.");
+				return false;
+			}
+
+			if(form.nameDuplication.value != "nameCheck"){
+				alert("이름(닉네임) 중복체크를 해주세요");
+				return false;
+			}
+
+			if(form.email.value){
+				alert("이메일을 입력하세요");
+				return false;
+			}
+
+			if(form.emalilDuplication.value != "emailCheck"){
+				alert("이메일 중복체크를 해주세요");
+				return false;
+			}
+
+			if(!form.password.value){
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+
+			if(form.password.value != form.passwordcheck.value){
+				alert("비밀번호를 동일하게 입력하세요.");
+				return false;
+			}
+			
+			
+		}
+		</script>
 
 	<div id="wrap-me1">
 		<% if(alertMsg != null) { %>
@@ -129,28 +170,35 @@
 				<hr>
 
 				<div>
-					<input type="text" name="userName" placeholder="이름을 입력하세요(닉네임)"
+					<input type="text" name="userName" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
+					style="width: 250px;">
+					<input type="hidden" name="nameDuplication" value="idUncheck">
+				</div>
+				<div style="height: 37.5px;">
+					가입가능합니다(확인문구)
+					<button type="button" onclick="idCheck();">중복확인</button>
+				</div>
+				<div>
+					<input type="email" name="email" placeholder="이메일을 입력하세요"
 						style="width: 250px;">
 				</div>
 				<div style="height: 37.5px;">
 					가입가능합니다(확인문구)
-					<button type="button">중복확인</button>
-				</div>
-				<div>
-					<input type="text" name="email" placeholder="이메일을 입력하세요"
-						style="width: 250px;">
+					<button type="button" onclick="emailCheck();">중복확인</button>
 				</div>
 				<div style="height: 37.5px;">
-					가입가능합니다(확인문구)
-					<button type="button">중복확인</button>
-				</div>
-				<div style="height: 37.5px;">
-					<input type="password" name="userPwd" placeholder="비밀번호를 입력하세요" style="width: 250px;">
+					<input type="password" class="pw" name="userPwd" id="password1" placeholder="비밀번호를 입력하세요" style="width: 250px;">
 				</div>
 				<div>
-					<input type="password" placeholder="비밀번호를 다시 입력하세요" style="width: 250px;">
+					<input type="password" class="pw" id="password2" placeholder="비밀번호를 다시 입력하세요" style="width: 250px;">
 				</div>
-				<div style="height: 37.5px;">비밀번호가 일치/불일치 합니다(확인문구)</div>
+				<div style="height: 37.5px;">
+					<span id="alert-success" style="display:none;">비밀번호가 일치합니다</span>
+					<span id="alert-danger" style="display:none; color: red; font-weight: bold;" >비밀번호가 일치하지않습니다.</span>
+				</div>
+				<div>
+					<input type="text" name="phone" placeholder="전화번호를 입력해주세요('-' 제외)" style="width: 250px;">
+				</div>
 				<!--  
 				<div style="height: 37.5px;">
 					<b>생년월일</b>
@@ -205,6 +253,28 @@
 					<a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며, 동의합니다.
 
 					<script>
+
+						$('.pw').focusout(function(){
+							let pwd1 = $("#password1").val();
+							let pwd2 = $("#password2").val();
+
+							if(pwd1 =="" && pwd2 ==""){
+								null;
+							} else if(pwd1 !="" && pwd2 !=""){
+								if(pwd1 == pwd2){
+									$("#alert-success").css('display', 'block');
+									$("#alert-danger").css('display','none')
+								} else {
+									alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요")
+									$("#alert-success").css('display','none');
+									$("#alert-danger").css('display','block')
+									$("#password2").val("")
+								}
+
+							}
+						})
+
+
 						$(".box button").attr("disabled", true);
 							$("#chk").on('click', function(){
 								var chk = $("input:checkbox[id='chk']").is(":checked");
@@ -221,7 +291,7 @@
 					</script>
 				</div>
 				<div align="center" class="box on">
-					<br><br>
+					<br>
 					<a href="<%=contextPath%>" class="btn btn-danger">뒤로가기</a>
 					<button type="submit" class="btn btn-warning" disabled>완료</button>
 				</div>

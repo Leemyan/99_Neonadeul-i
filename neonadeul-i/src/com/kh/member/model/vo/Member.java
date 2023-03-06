@@ -9,13 +9,14 @@ public class Member {
 	private String email; // EMAIL
 	private String userPwd; // USERPWD
 	private Date birth; // BIRTH
+	private String phone; // PHONE
 	private Date enrollDate; // ENROLLDATE
 	private Date leaveDate; // LEAVEDATE
 	private int membership; // MEMBERSHIP
 	
 	public Member() {}
 
-	public Member(int userNo, String userName, String email, String userPwd, Date birth, Date enrollDate,
+	public Member(int userNo, String userName, String email, String userPwd, Date birth, String phone, Date enrollDate,
 			Date leaveDate, int membership) {
 		super();
 		this.userNo = userNo;
@@ -23,16 +24,17 @@ public class Member {
 		this.email = email;
 		this.userPwd = userPwd;
 		this.birth = birth;
+		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.leaveDate = leaveDate;
 		this.membership = membership;
 	}
 	
-	public Member(String userName, String email, String userPwd, Date birth) { // ?
+	public Member(String userName, String email, String userPwd, String phone) { // ?
 		this.userName = userName;
 		this.email = email;
 		this.userPwd = userPwd;
-		this.birth = birth;
+		this.phone = phone;
 	}
 	
 
@@ -92,6 +94,14 @@ public class Member {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public Date getEnrollDate() {
 		return enrollDate;
@@ -120,9 +130,11 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userName=" + userName + ", email=" + email + ", userPwd=" + userPwd
-				+ ", birth=" + birth + ", enrollDate=" + enrollDate + ", leaveDate=" + leaveDate + ", membership="
-				+ membership + "]";
+				+ ", birth=" + birth + ", phone=" + phone + ", enrollDate=" + enrollDate + ", leaveDate=" + leaveDate
+				+ ", membership=" + membership + "]";
 	}
+
+	
 	
 	
 

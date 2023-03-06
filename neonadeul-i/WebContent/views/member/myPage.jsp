@@ -56,12 +56,7 @@
 		
 	</head>
 	<body>
-		<% if(alertMsg != null) { %>
-			<script>
-				alert("<%= alertMsg %>");
-			</script>
-			<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
-		<% } %>
+		
 	
 	<%
 		String email = loginUser.getEmail();
@@ -127,14 +122,14 @@
 									<input type="hidden" name="userId" value="<%=email%>">
 									<table>
 										 <tr align="center">
-											<th>이름</th>
-											<td><%=loginUser.getUserName()%></td>
+											<th width="100">이름</th>
+											<td width="200"><%=loginUser.getUserName()%></td>
 										</tr>
 										<tr align="center">
 											<th>이메일</th>
 											<td><%=loginUser.getEmail()%></td>
 										</tr> 
-										<tr>
+										<tr align="center">
 											<th>전화번호</th>
 											<td><%=loginUser.getPhone()%></td>
 										</tr>

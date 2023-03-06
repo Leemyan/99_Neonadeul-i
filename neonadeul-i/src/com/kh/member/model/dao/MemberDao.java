@@ -177,7 +177,7 @@ public class MemberDao {
 	}
 	
 	public int deleteMember(Connection conn, String email, String userpwd) {
-		System.out.println("Dao도 탈래탈래");
+		/* System.out.println("Dao도 탈래탈래"); */
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -189,8 +189,8 @@ public class MemberDao {
 			pstmt.setString(1, email);
 			pstmt.setString(2, userpwd);
 			
-			System.out.println("email : " + email);
-			System.out.println("userpwd : " + userpwd);
+//			System.out.println("email : " + email);
+//			System.out.println("userpwd : " + userpwd);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -198,11 +198,46 @@ public class MemberDao {
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("result : " + result);
+//		System.out.println("result : " + result);
 		return result;
 	}
 	
-	public String findId(Connection conn, String userName) {
+	public String findId(String name, String phone) { // 이거 씀
+		
+		System.out.println("dao 탔나?");
+		
+		String id = null;
+		PreparedStatement pstmt = null;
+		Connection conn = getConnection();
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findId");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			
+			System.out.println("name : " + name);
+			System.out.println("phone : " + phone);
+			
+			System.out.println();
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				id = rset.getString("email");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("dao id = " + id);
+		return id;
+	}
+	
+	public String findId(Connection conn, String userName, String phone) { // 이거 안씀
 		String id = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -213,6 +248,7 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, userName);
+			pstmt.setString(2, phone);
 			
 			rset = pstmt.executeQuery();
 			

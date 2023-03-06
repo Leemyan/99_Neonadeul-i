@@ -33,7 +33,7 @@ public class deleteMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("컨트롤러 탐. 야호");
+//		System.out.println("컨트롤러 탐. 야호");
 		String email = request.getParameter("email");
 		String userpwd = request.getParameter("userpwd");
 		
@@ -41,11 +41,11 @@ public class deleteMemberController extends HttpServlet {
 		
 		Member deleteMem = new MemberService().deleteMember(email, userpwd);
 		HttpSession session = request.getSession();
-		System.out.println("컨트롤러 deleteMem = " + deleteMem);
+//		System.out.println("컨트롤러 deleteMem = " + deleteMem);
 		
 		if(deleteMem == null) {
-			System.out.println("탈퇴실패");
-			System.out.println("회원탈퇴에 실패했습니다.");
+//			System.out.println("탈퇴실패");
+//			System.out.println("회원탈퇴에 실패했습니다.");
 			response.sendRedirect(request.getContextPath() + "/mypage.me");
 			
 		} else {

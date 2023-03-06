@@ -4,8 +4,6 @@
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	String email = loginUser.getEmail();
-	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
 %>    
@@ -88,17 +86,20 @@
 	<% } %>
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:#6667AB;"><img src="../../resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>
+			<h2 class="card-title" style="color:#6667AB;"><img src="resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>
 		</div>
         
 		<div class="card-body">
-      <form action="<%=contextPath%>/find.id" class="form-signin" method="POST">
-  		 <p class="text2"> ${findid2}</p>
+      <form name="idFindScreen" action="<%=contextPath%>/view.id" class="form-signin" method="POST">
+  		<p class="text2"> ${findid2}</p>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
+		<input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호('-'제외')" required>
         
         	<p class="check" id="check">${check}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="idSearch();">아 이 디 찾 기</button>
 			
+			
+
       </form>
         
 		</div>
@@ -111,6 +112,19 @@
   </body>
   <script type="text/javascript">
 		
+		function idSearch(){
+			let frm = document.idFindScreen;
+
+			if(frm.name.value.length < 1){
+				alert("이름을 입력해주세요");
+				return;
+			}
+			if(frm.phone.value.length != 11){
+				alert("핸드폰번호를 '-'를 뺀 11자리로 입력해주세요")
+				return
+			}
+
+		}
   		
   
   		$("#name").focusout(function(){

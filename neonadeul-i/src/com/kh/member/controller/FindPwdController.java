@@ -31,7 +31,10 @@ public class FindPwdController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String inputPwd = request.getParameter("inputPwd");
+		request.getRequestDispatcher("views/member/findPwdForm.jsp").forward(request, response);
+		System.out.println("controller 탔나?");
+		
+		String inputPwd = request.getParameter("pw");
 		String email = request.getParameter("email");
 		String userName = request.getParameter("username");
 		

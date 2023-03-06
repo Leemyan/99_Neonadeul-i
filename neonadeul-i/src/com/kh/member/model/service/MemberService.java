@@ -59,7 +59,7 @@ public class MemberService {
 	}
 	
 	public Member updatePwd(String email, String userPwd, String updatePwd) {
-		System.out.println("여기도?");
+//		System.out.println("여기도?");
 		Connection conn = getConnection();
 		int result = new MemberDao().updatePwd(conn, email, userPwd, updatePwd);
 		Member updateMem = null;
@@ -75,7 +75,7 @@ public class MemberService {
 	}
 	
 	public Member deleteMember(String email, String userpwd) {
-		System.out.println("삭제 서비스도 탐. 끼야호");
+//		System.out.println("삭제 서비스도 탐. 끼야호");
 		Connection conn = getConnection();
 		int result = new MemberDao().deleteMember(conn, email, userpwd);
 		Member deleteMem = null;
@@ -88,20 +88,23 @@ public class MemberService {
 			rollback(conn);
 		}
 		close(conn);
-		System.out.println(" service단 delteMem : " + deleteMem);
+//		System.out.println(" service단 deleteMem : " + deleteMem);
 		return deleteMem;
 	}
 	
-	public String findId(String userName) {
+	public String findId(String userName, String phone) {
+		System.out.println("service 탓나?");
 		Connection conn = getConnection();
 		
-		String findId = new MemberDao().findId(conn, userName);
+		String Id = new MemberDao().findId(conn, userName, phone);
 		
+		System.out.println("서비스 id = " + Id);
 		close(conn);
-		return findId;
+		return Id;
 	}
 	
 	public Member findPwd(String inputPwd, String userName, String email) {
+		System.out.println("service 탔나? 비밀번호 찾자");
 		Connection conn = getConnection();
 		
 		int result = new MemberDao().findPwd(conn, inputPwd, userName, email);
@@ -114,6 +117,7 @@ public class MemberService {
 			rollback(conn);
 		}
 		close(conn);
+		System.out.println("updatePwd : " + updatePwd );
 		return updatePwd;
 	}
 

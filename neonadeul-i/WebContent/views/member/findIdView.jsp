@@ -1,10 +1,15 @@
+<%@page import="com.sun.jdi.connect.spi.Connection"%>
+<%@page import="com.kh.member.model.dao.MemberDao"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	String email = loginUser.getEmail();
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
+	MemberDao dao = new MemberDao();
+	String id = dao.findId(name, phone);
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
@@ -92,14 +97,17 @@
 		</div>
         
 		<div class="card-body">
-      <form action="<%=contextPath%>/find.id" class="form-signin" method="POST">
+      <form action="<%=contextPath%>/find.pwd" class="form-signin" method="POST">
+      <%if(id != null){ %>
   		 <p class="text2"> ${findid2}</p>
-         <span>회원가입시 사용한 이메일은 ..<p><%=loginUser.getEmail()%></p>입니다.</span>
+         <span>회원가입시 사용한 이메일은 .. <p><%=id%></p>입니다.</span>
         <!-- <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR> -->
-         
-        
+      <%} else { %>
+      <span> 등록된 정보가 없습니다.</span>
+      <input type="button" id="btnback" value="다시 찾기" onclick="history.back()">
+      <%} %>
         	<p class="check" id="check">${check}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비 밀 번 호 찾 기</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="findPwd();">비 밀 번 호 찾 기</button>
       
       </form>
         
@@ -113,7 +121,10 @@
   </body>
   <script type="text/javascript">
 		
-  		
+  		function findPwd(){
+  			location.href='<%=contextPath%>/find.pwd'
+		
+  		}
   
   		$("#name").focusout(function(){
   			

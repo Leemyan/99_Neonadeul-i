@@ -120,8 +120,8 @@
       </form>
 
       <div id="login_findid">
-        <button type="button" onclick="location.href='<%=contextPath%>/views/member/findIdForm.jsp'" style="margin-left: 50px;" > 아이디찾기</button>
-        <button type="button" onclick="location.href='<%=contextPath%>/views/member/findPwdForm.jsp'" style="margin-left: 5px;" > 비밀번호찾기</button>
+        <button type="button" onclick="location.href='<%=contextPath%>/find.id'" style="margin-left: 50px;" > 아이디찾기</button>
+        <button type="button" onclick="location.href='<%=contextPath%>/find.pwd'" style="margin-left: 5px;" > 비밀번호찾기</button>
       </div>
         <div id="login_enroll" align="right">
             <button type="button" onclick="enrollPage()">가입하기</button>

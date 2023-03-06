@@ -4,7 +4,6 @@
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	String email = loginUser.getEmail();
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
@@ -86,7 +85,7 @@
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
             
-			<h2 class="card-title" style="color:#6667AB;"><img src="../../resources/image/cat/cat.png" width="60px"/>비밀번호 찾기</h2>
+			<h2 class="card-title" style="color:#6667AB;"><img src="resources/image/cat/cat.png" width="60px"/>비밀번호 찾기</h2>
 		</div>
         
 		<div class="card-body">
@@ -103,7 +102,7 @@
       
 		</div>
         <div class="links">
-            <a href="<%=contextPath%>/views/member/findIdForm.jsp">아이디 찾기</a> | <a href="<%=contextPath%>">로그인</a> | <a href="<%=contextPath%>/enroll.me">회원가입</a>
+            <a href="<%=contextPath%>/find.id">아이디 찾기</a> | <a href="<%=contextPath%>">로그인</a> | <a href="<%=contextPath%>/enroll.me">회원가입</a>
 
         </div>
 	</div>

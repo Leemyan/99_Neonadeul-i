@@ -24,7 +24,6 @@ public class FindIdController extends HttpServlet {
      */
     public FindIdController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -32,15 +31,21 @@ public class FindIdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		request.getRequestDispatcher("views/member/findIdForm.jsp").forward(request, response);
+		System.out.println("controller 탔나?");
+		
 		
 		String userName = request.getParameter("userName");
+		String phone = request.getParameter("phone");
 		
-		String findId = new MemberService().findId(userName);
+		String Id = new MemberService().findId(userName, phone);
 		
-		if(findId == null) { // 조회실패
+		System.out.println("컨트롤러 id = "+Id);
+		if(Id == null) { // 조회실패
 			
 			request.setAttribute("errorMsg", "아이디찾기 실패! 아직 회원이 아니시라면 가입 후 시도해주세요.");
 			response.sendRedirect(request.getContextPath());
+			return;
 		} else { // 조회성공
 			RequestDispatcher view = request.getRequestDispatcher("views/member/findIdView.jsp");
 			view.forward(request, response);

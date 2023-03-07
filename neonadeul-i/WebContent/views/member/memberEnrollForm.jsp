@@ -43,6 +43,10 @@
 
     </style>
 <!-- jquery파일 종합응용에서 복붙함 -->
+	<!-- ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 일단 가져온 것 not a function -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -170,12 +174,12 @@
 				<hr>
 
 				<div>
-					<input type="text" id="id" name="userName" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
+					<input type="text" id="id" name="userName" class="input_id" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
 					style="width: 250px;">
 					<input type="hidden" name="nameDuplication" value="idUncheck">
 				</div>
 				<div style="height: 37.5px;" align="center">
-					<span id="result"></span>
+					<span id="checkId"></span>
 					<button type="button" onclick="idCheck();">중복확인</button>
 				</div>
 				<div>
@@ -183,7 +187,7 @@
 						style="width: 250px;">
 				</div>
 				<div style="height: 37.5px;">
-					가입가능합니다(확인문구)
+					<span id="checkEmail"> </span>
 					<button type="button" onclick="emailCheck();">중복확인</button>
 				</div>
 				<div style="height: 37.5px;">
@@ -253,6 +257,30 @@
 					<a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며, 동의합니다.
 
 					<script>
+
+						$('.input_id').focusout(function(){
+							let userId = $('.input_id').val(); // input_id에 입력된 값
+						
+
+							$.ajax({
+								url:"IdCheckService",
+								type:"post",
+								data:{userId: userId},
+								dataType:'json',
+								success:function(result){
+									if(result == 0){
+										$("#checkId").html('사용할 수 없는 아이디입니다.');
+										$("#checkId").attr('color','red');
+									} else{
+										$("#checkId").html('사용할 수 있는 아이디입니다.');
+										$("#checkId").attr('color','green');
+									}
+								},
+								error:function(){
+									alert("서버요청실패");
+								}
+							})	
+						})
 
 						function idCheck(){
 							var idStr = $("#id").val();

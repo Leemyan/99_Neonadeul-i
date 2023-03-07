@@ -332,5 +332,33 @@ public class MemberDao {
 			return pwd;
 		
 	}
+	
+	public int checkId(String id) {
+		String sql = prop.getProperty("checkId");
+		Connection conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int idCheck = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()|| id.equals("")) {
+				idCheck = 0;
+			} else {
+				idCheck = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return idCheck;
+	}
 
 }

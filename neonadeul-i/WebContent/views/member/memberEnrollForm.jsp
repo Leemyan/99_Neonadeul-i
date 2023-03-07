@@ -179,8 +179,8 @@
 					<input type="hidden" name="nameDuplication" value="idUncheck">
 				</div>
 				<div style="height: 37.5px;" align="center">
-					<span id="checkId"></span>
-					<button type="button" onclick="idCheck();">중복확인</button>
+					<span id="result"></span>
+					<button type="button" id="btnCheck" >중복확인</button>
 				</div>
 				<div>
 					<input type="email" name="email" placeholder="이메일을 입력하세요"
@@ -190,6 +190,8 @@
 					<span id="checkEmail"> </span>
 					<button type="button" onclick="emailCheck();">중복확인</button>
 				</div>
+
+				
 				<div style="height: 37.5px;">
 					<input type="password" class="pw" name="userPwd" id="password1" placeholder="비밀번호를 입력하세요" style="width: 250px;">
 				</div>
@@ -258,44 +260,46 @@
 
 					<script>
 
-						$('.input_id').focusout(function(){
-							let userId = $('.input_id').val(); // input_id에 입력된 값
+					
+
+						// $('.input_id').focusout(function(){
+						// 	let userId = $('.input_id').val(); // input_id에 입력된 값
 						
 
-							$.ajax({
-								url:"IdCheckService",
-								type:"post",
-								data:{userId: userId},
-								dataType:'json',
-								success:function(result){
-									if(result == 0){
-										$("#checkId").html('사용할 수 없는 아이디입니다.');
-										$("#checkId").attr('color','red');
-									} else{
-										$("#checkId").html('사용할 수 있는 아이디입니다.');
-										$("#checkId").attr('color','green');
-									}
-								},
-								error:function(){
-									alert("서버요청실패");
-								}
-							})	
-						})
+						// 	$.ajax({
+						// 		url:"IdCheckService",
+						// 		type:"post",
+						// 		data:{userId: userId},
+						// 		dataType:'json',
+						// 		success:function(result){
+						// 			if(result == 0){
+						// 				$("#checkId").html('사용할 수 없는 아이디입니다.');
+						// 				$("#checkId").attr('color','red');
+						// 			} else{
+						// 				$("#checkId").html('사용할 수 있는 아이디입니다.');
+						// 				$("#checkId").attr('color','green');
+						// 			}
+						// 		},
+						// 		error:function(){
+						// 			alert("서버요청실패");
+						// 		}
+						// 	})	
+						// })
 
-						function idCheck(){
-							var idStr = $("#id").val();
+						// function idCheck(){
+						// 	var idStr = $("#id").val();
 
-							$.ajax({
-								url : "idCheckServlet?id=" + idStr,
-								success : function(data){
-									if(data == "success"){
-										$("#result").text("사용가능한 아이디입니다.");
-									} else if(data == "fail"){
-										$("#result").text("중복된 아이디입니다.");
-									}
-								}
-							})
-						}
+						// 	$.ajax({
+						// 		url : "idCheckServlet?id=" + idStr,
+						// 		success : function(data){
+						// 			if(data == "success"){
+						// 				$("#result").text("사용가능한 아이디입니다.");
+						// 			} else if(data == "fail"){
+						// 				$("#result").text("중복된 아이디입니다.");
+						// 			}
+						// 		}
+						// 	})
+						// }
 
 						$('.pw').focusout(function(){
 							let pwd1 = $("#password1").val();

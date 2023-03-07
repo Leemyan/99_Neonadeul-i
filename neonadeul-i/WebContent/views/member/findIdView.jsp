@@ -6,10 +6,10 @@
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	String name = request.getParameter("name");
+	String userName = request.getParameter("name");
 	String phone = request.getParameter("phone");
 	MemberDao dao = new MemberDao();
-	String id = dao.findId(name, phone);
+	String id = dao.findId(userName, phone);
 	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
@@ -97,7 +97,9 @@
 		</div>
         
 		<div class="card-body">
+
       <form action="<%=contextPath%>/find.pwd" class="form-signin" method="POST">
+		
       <%if(id != null){ %>
   		 <p class="text2"> ${findid2}</p>
          <span>회원가입시 사용한 이메일은 .. <p><%=id%></p>입니다.</span>

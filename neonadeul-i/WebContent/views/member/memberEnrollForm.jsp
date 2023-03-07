@@ -170,12 +170,12 @@
 				<hr>
 
 				<div>
-					<input type="text" name="userName" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
+					<input type="text" id="id" name="userName" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
 					style="width: 250px;">
 					<input type="hidden" name="nameDuplication" value="idUncheck">
 				</div>
-				<div style="height: 37.5px;">
-					가입가능합니다(확인문구)
+				<div style="height: 37.5px;" align="center">
+					<span id="result"></span>
 					<button type="button" onclick="idCheck();">중복확인</button>
 				</div>
 				<div>
@@ -254,6 +254,21 @@
 
 					<script>
 
+						function idCheck(){
+							var idStr = $("#id").val();
+
+							$.ajax({
+								url : "idCheckServlet?id=" + idStr,
+								success : function(data){
+									if(data == "success"){
+										$("#result").text("사용가능한 아이디입니다.");
+									} else if(data == "fail"){
+										$("#result").text("중복된 아이디입니다.");
+									}
+								}
+							})
+						}
+
 						$('.pw').focusout(function(){
 							let pwd1 = $("#password1").val();
 							let pwd2 = $("#password2").val();
@@ -289,6 +304,8 @@
 							
 						
 					</script>
+
+
 				</div>
 				<div align="center" class="box on">
 					<br>

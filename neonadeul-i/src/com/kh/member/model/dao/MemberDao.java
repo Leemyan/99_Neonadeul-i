@@ -232,6 +232,10 @@ public class MemberDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+			
 		}
 		System.out.println("dao id = " + id);
 		return id;
@@ -265,10 +269,10 @@ public class MemberDao {
 		return id;
 	}
 	
-	public int findPwd(Connection conn, String inputPwd, String userName, String email) {
+	public int findPwd2(Connection conn, String inputPwd, String userName, String email) { // 못씀. 쓰고싶었음.
 		int result = 0;
 		PreparedStatement pstmt = null;
-		
+		System.out.println("Dao 탔나?");
 		String sql = prop.getProperty("findPwd");
 		
 		try {
@@ -278,13 +282,54 @@ public class MemberDao {
 			pstmt.setString(2, email);
 			pstmt.setString(3, userName);
 			
+			System.out.println("inputPwd : "+inputPwd);
+			System.out.println("email : "+email);
+			System.out.println("userName : "+userName);
+			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
+		System.out.println("result : "+result);
 		return result;
+		
+	}
+	
+	public String findPwd(String userName, String email) {
+		System.out.println("Dao 도착?");
+		
+		String pwd = null;
+		PreparedStatement pstmt = null;
+		Connection conn = getConnection();
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("viewPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, userName);
+			pstmt.setString(2, email);
+			
+			System.out.println("userName : "+userName);
+			System.out.println("email : "+email);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pwd = rset.getString("userPwd");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		System.out.println("dao pwd : "+pwd);
+			return pwd;
 		
 	}
 

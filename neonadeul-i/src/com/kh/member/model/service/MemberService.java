@@ -103,22 +103,33 @@ public class MemberService {
 		return Id;
 	}
 	
-	public Member findPwd(String inputPwd, String userName, String email) {
-		System.out.println("service 탔나? 비밀번호 찾자");
+//	public Member findPwd2(String inputPwd, String userName, String email) { // 못씀. 이거 쓰고싶었는데,
+//		System.out.println("service 탔나? 비밀번호 찾자");
+//		Connection conn = getConnection();
+//		
+//		int result = new MemberDao().findPwd(conn, inputPwd, userName, email);
+//		Member updatePwd = null;
+//		
+//		if(result > 0) { // 성공
+//			commit(conn);
+//			updatePwd = new MemberDao().selectMember(conn, email);
+//		} else { // 실패
+//			rollback(conn);
+//		}
+//		close(conn);
+//		System.out.println("updatePwd : " + updatePwd );
+//		return updatePwd;
+//	}
+	
+	public String findPwd(String userName, String email) {
+		System.out.println("service단 도착 그리고 Dao로 출발");
 		Connection conn = getConnection();
 		
-		int result = new MemberDao().findPwd(conn, inputPwd, userName, email);
-		Member updatePwd = null;
+		String pwd = new MemberDao().findPwd(userName, email);
 		
-		if(result > 0) { // 성공
-			commit(conn);
-			updatePwd = new MemberDao().selectMember(conn, email);
-		} else { // 실패
-			rollback(conn);
-		}
+		System.out.println("서비스 pwd : "+ pwd);
 		close(conn);
-		System.out.println("updatePwd : " + updatePwd );
-		return updatePwd;
+		return pwd;
 	}
 
 }

@@ -4,6 +4,7 @@
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
 %>    
@@ -79,32 +80,31 @@
 
 	<div class="card align-middle" style="width:25rem;">
 		<% if(alertMsg != null) { %>
-	<script>
-		alert("<%= alertMsg %>");
-	</script>
-	<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
-	<% } %>
+		<script>
+			alert("<%= alertMsg %>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+		<% } %>
 		<div class="card-title" style="margin-top:30px;">
             
 			<h2 class="card-title" style="color:#6667AB;"><img src="resources/image/cat/cat_2022.png" width="60px" >아이디 찾기</h2>
 		</div>
         
 		<div class="card-body">
+
       <form name="idFindScreen" action="<%=contextPath%>/view.id" class="form-signin" method="POST">
   		<p class="text2"> ${findid2}</p>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
 		<input type="text" name="phone" id="phone" class="form-control" placeholder="전화번호('-'제외')" required>
         
         	<p class="check" id="check">${check}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick="idSearch();">아 이 디 찾 기</button>
-			
-			
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" onclick=" return idSearch();">아 이 디 찾 기</button>
 
       </form>
         
 		</div>
         <div class="links">
-            <a href="<%=contextPath%>/views/member/findPwdForm.jsp">비밀번호 찾기</a> | <a href="<%=contextPath%>">로그인</a> | <a href="<%=contextPath%>/enroll.me">회원가입</a>
+            <a href="<%=contextPath%>/find.pwd">비밀번호 찾기</a> | <a href="<%=contextPath%>">로그인</a> | <a href="<%=contextPath%>/enroll.me">회원가입</a>
 
         </div>
 	</div>
@@ -117,11 +117,11 @@
 
 			if(frm.name.value.length < 1){
 				alert("이름을 입력해주세요");
-				return;
+				return false;
 			}
 			if(frm.phone.value.length != 11){
 				alert("핸드폰번호를 '-'를 뺀 11자리로 입력해주세요")
-				return
+				return false;
 			}
 
 		}

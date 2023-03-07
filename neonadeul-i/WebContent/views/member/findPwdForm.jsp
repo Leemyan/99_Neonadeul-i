@@ -21,7 +21,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>아이디 찾기</title>
+    <title>비밀번호 찾기</title>
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 	
@@ -83,6 +83,12 @@
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 
 	<div class="card align-middle" style="width:25rem;">
+		<% if(alertMsg != null) { %>
+		<script>
+			alert("<%= alertMsg %>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>  <!-- 세션만료시키기 위한것(안하면 회원가입시 home눌러도 회원가입 축하한다고 나옴) -->
+		<% } %>
 		<div class="card-title" style="margin-top:30px;">
             
 			<h2 class="card-title" style="color:#6667AB;"><img src="resources/image/cat/cat.png" width="60px"/>비밀번호 찾기</h2>
@@ -90,9 +96,9 @@
         
 		<div class="card-body">
 
-      <form action="<%=contextPath %>/view.pwd" class="form-signin" method="POST">
+      <form name="pwFindScreen" action="<%=contextPath %>/view.pwd" class="form-signin" method="POST">
         
-        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required><BR>
+        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="text" name="email" id="email" class="form-control" placeholder="이메일" required><br>
 
         <p class="checks" id="checks">${findpw_checkf}</p><br/>
@@ -103,7 +109,6 @@
 		</div>
         <div class="links">
             <a href="<%=contextPath%>/find.id">아이디 찾기</a> | <a href="<%=contextPath%>">로그인</a> | <a href="<%=contextPath%>/enroll.me">회원가입</a>
-
         </div>
 	</div>
   
@@ -112,21 +117,21 @@
 
 	
 	  	//아이디 정규식
-		var idJ = /^[a-z0-9]{5,20}$/;
+		// var idJ = /^[a-z0-9]{5,20}$/;
 		
-  		$("#member_id").focusout(function(){
-	     if($('#member_id').val() == ""){
-	   		$('#checks').text('아이디를 입력해주세요.');
-	   	  	$('#checks').css('color', 'red');
-	     }
-	     });
+  		// $("#member_id").focusout(function(){
+	    //  if($('#member_id').val() == ""){
+	   	// 	$('#checks').text('아이디를 입력해주세요.');
+	   	//   	$('#checks').css('color', 'red');
+	    //  }
+	    //  });
   		
-  		$("#member_id").focusout(function(){
-  			if(!idJ.test($(this).val())){
-  			$('#checks').text('5~20자의 영문 소문자, 숫자만 사용가능합니다');
-  			$('#checks').css('color', 'red');
-  		}
-  		 });
+  		// $("#member_id").focusout(function(){
+  		// 	if(!idJ.test($(this).val())){
+  		// 	$('#checks').text('5~20자의 영문 소문자, 숫자만 사용가능합니다');
+  		// 	$('#checks').css('color', 'red');
+  		// }
+  		//  });
   		
   		$("#name").focusout(function(){
 	     if($('#name').val() == ""){

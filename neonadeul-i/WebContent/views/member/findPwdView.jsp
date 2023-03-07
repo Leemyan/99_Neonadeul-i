@@ -1,10 +1,15 @@
+<%@page import="com.kh.member.model.dao.MemberDao"%>
 <%@page import="com.kh.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	String contextPath = request.getContextPath();
 	Member loginUser = (Member)session.getAttribute("loginUser");
-	
+	String userName = request.getParameter("name");
+	String email = request.getParameter("email");
+	MemberDao dao = new MemberDao();
+	String pw = dao.findPwd(userName, email);
+
 	String alertMsg = (String)session.getAttribute("alertMsg");
 
 %>   
@@ -21,7 +26,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>아이디 찾기</title>
+    <title>비밀번호 찾기</title>
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 	
@@ -80,11 +85,6 @@
   </head>
 
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
-		
-		 <%
-		 Object data = session.getAttribute("findid");
-		 String finduid = (String)data;
-  		 %>
   		 
 	<div class="card align-middle" style="width:25rem;">
 		<% if(alertMsg != null) { %>
@@ -99,13 +99,25 @@
 		</div>
         
 		<div class="card-body">
-      <form action="<%=contextPath %>/view.pwd" class="form-signin" method="POST">
-      <input type="hidden" name="member_id" >
-      
-        <input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호" required ><BR>
-        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
-        <p class="check" id="check2">${resetpw_check}</p><br/>
-        <button type="button"  id="btn-Yes" onclick="regist()" class="btn btn-lg btn-primary btn-block">비밀번호 재설정</button>
+      <form action="<%=contextPath %>" class="form-signin" method="POST">
+	     
+	      <%System.out.println("pw : " + pw); %>
+	
+		  <%if(pw != null){ %>
+			<p class="text2"> ${findid2}</p>
+		  <span>회원님의 비밀번호는 .. <p><b><%=pw%></b></p>입니다.</span>
+			<%} else { %>
+			<span> 등록된 정보가 없습니다.</span>
+			<input type="button" id="btnback" value="다시 찾기" onclick="history.back()">
+			<%} %>
+			 <p class="check" id="check">${check}</p><br/>
+		 <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit" >로그인하기</button>
+	   
+	<!--       
+	        <input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호" required ><BR>
+	        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
+	        <p class="check" id="check2">${resetpw_check}</p><br/>
+	        <button type="button"  id="btn-Yes" onclick="regist()" class="btn btn-lg btn-primary btn-block">비밀번호 재설정</button> -->
       </form>
         
 		</div>
@@ -120,75 +132,75 @@
   
   <script >
 	
-  	var check2 = "${findpw_checkt}";
-	if(check2 != ""){
-	 	alert(check2);
-	}
+  	// var check2 = "${findpw_checkt}";
+	// if(check2 != ""){
+	//  	alert(check2);
+	// }
 	
-	// 비밀번호 정규식
-	var pwJ = /^[a-z0-9]{4,20}$/; 
-	var pwc = false;
-	var pwc2 = false;
+	// // 비밀번호 정규식
+	// var pwJ = /^[a-z0-9]{4,20}$/; 
+	// var pwc = false;
+	// var pwc2 = false;
 	
-	$("#pw").focusout(function(){
-	     if($('#pw').val() == ""){
-	   		$('#check').text('비밀번호를 입력해주세요.');
-	   	  	$('#check').css('color', 'red');
+	// $("#pw").focusout(function(){
+	//      if($('#pw').val() == ""){
+	//    		$('#check').text('비밀번호를 입력해주세요.');
+	//    	  	$('#check').css('color', 'red');
 	   	  	
-	     }else if(!pwJ.test($(this).val())){
-			$('#check').text('6~20자의 영문 소문자, 숫자만 사용가능합니다');
-			$('#check').css('color', 'red');
-	     }else{
-	    	 pwc2 = true;
-	    	 $('#check').hide();
-	     }
-	  });
+	//      }else if(!pwJ.test($(this).val())){
+	// 		$('#check').text('4~20자의 영문 소문자, 숫자만 사용가능합니다');
+	// 		$('#check').css('color', 'red');
+	//      }else{
+	//     	 pwc2 = true;
+	//     	 $('#check').hide();
+	//      }
+	//   });
 	
-	$("#pw2").focusout(function(){
-	     if($('#pw2').val() == ""){
-	   		$('#check').text('필수 정보입니다.')
-	   	  	$('#check').css('color', 'red')
-	 	}else
-   	 	$('#check').hide()
-	  });
+	// $("#pw2").focusout(function(){
+	//      if($('#pw2').val() == ""){
+	//    		$('#check').text('필수 정보입니다.')
+	//    	  	$('#check').css('color', 'red')
+	//  	}else
+   	//  	$('#check').hide()
+	//   });
 	
-	$("#pw2").keyup(function(){
+	// $("#pw2").keyup(function(){
 		   
-	    if($(this).val()!=$("#pw").val()){
-	        $("#check2").html("비밀번호가 다릅니다");
-	        $("#check2").css("color",'red');
-	        pwc = false;
+	//     if($(this).val()!=$("#pw").val()){
+	//         $("#check2").html("비밀번호가 다릅니다");
+	//         $("#check2").css("color",'red');
+	//         pwc = false;
 	
-	    }else{
-	        $("#check2").html("비밀번호가 일치합니다");
-	        $("#check2").css("color",'blue');
-	        pwc = true;
-	    }
-	});
+	//     }else{
+	//         $("#check2").html("비밀번호가 일치합니다");
+	//         $("#check2").css("color",'blue');
+	//         pwc = true;
+	//     }
+	// });
 	
-	$("#pw").keyup(function(){
+	// $("#pw").keyup(function(){
 		     
-	    if($(this).val()!=$("#pw2").val()){
-	        $("#check2").html("비밀번호가 다릅니다");
-	        $("#check2").css("color",'red');
-	        pwc = false;
+	//     if($(this).val()!=$("#pw2").val()){
+	//         $("#check2").html("비밀번호가 다릅니다");
+	//         $("#check2").css("color",'red');
+	//         pwc = false;
 	
-	    }else{
-	        $("#check2").html("비밀번호가 일치합니다");
-	        $("#check2").css("color",'blue');
-	        pwc = true;
-	    }
-	});
+	//     }else{
+	//         $("#check2").html("비밀번호가 일치합니다");
+	//         $("#check2").css("color",'blue');
+	//         pwc = true;
+	//     }
+	// });
 
-	function regist(){
-		if(pwc2 == false){
-		      alert('비밀번호는 6~20자의 영문 소문자, 숫자만 사용가능합니다')
-		 }else if(pwc == false ){
-			  	alert('비밀번호를 다시 확인해주세요')
-		}else{
-		 $('form').submit();
-		}
-		<%session.invalidate();%>
-		};
+	// function regist(){
+	// 	if(pwc2 == false){
+	// 	      alert('비밀번호는 4~20자의 영문 소문자, 숫자만 사용가능합니다')
+	// 	 }else if(pwc == false ){
+	// 		  	alert('비밀번호를 다시 확인해주세요')
+	// 	}else{
+	// 	 $('form').submit();
+	// 	}
+	// 	<%session.invalidate();%>
+	// 	};
   </script>
 </html>

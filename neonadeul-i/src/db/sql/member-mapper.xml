@@ -88,11 +88,18 @@
     AND PHONE = ?
 	</entry>
 	
-	<entry key="findPwd">
+	<entry key="findPwd"> <!-- 안씀 -->
 	UPDATE MEMBER
 		SET USERPWD = ?
 	WHERE EMAIL = ?
 	AND USERNAME = ?
+	</entry>
+	
+	<entry key="viewPwd">
+	SELECT USERPWD 
+		FROM MEMBER
+    WHERE USERNAME = ?
+    AND EMAIL = ?
 	</entry>
 	
 </properties>

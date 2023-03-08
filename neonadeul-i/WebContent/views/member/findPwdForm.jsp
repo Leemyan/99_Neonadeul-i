@@ -137,7 +137,9 @@
 	     if($('#name').val() == ""){
 	   		$('#checks').text('이름을 입력해주세요.');
 	   	  	$('#checks').css('color', 'red');
-	     }
+	     } else{
+			$('#checks').hide();
+		 }
 	     });
 	     
   		$("#email").focusout(function(){

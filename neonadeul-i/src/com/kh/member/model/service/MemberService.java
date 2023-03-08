@@ -131,5 +131,26 @@ public class MemberService {
 		close(conn);
 		return pwd;
 	}
+	
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		
+		int count = new MemberDao().idCheck(conn, checkId);
+		
+		
+		if(count > 0) {
+			
+			
+		}else {
+			
+			
+		}
+		
+		close(conn);
+
+		return count;
+
+	}
+	
 
 }

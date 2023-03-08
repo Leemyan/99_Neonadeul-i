@@ -43,15 +43,16 @@
 
     </style>
 <!-- jquery파일 종합응용에서 복붙함 -->
-	<!-- ajax -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <!-- 일단 가져온 것 not a function -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script> -->
 
 <!-- Popper JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -173,19 +174,22 @@
 
 				<hr>
 
-				<div>
-					<input type="text" id="id" name="userName" class="input_id" placeholder="이름을 입력하세요(닉네임)" onkeydown="inputNameChk();"
+				<div id="enroll=form">
+					<input type="text" id="idInput" name="userName"  placeholder="이름을 입력하세요(닉네임)" 
 					style="width: 250px;">
 					<input type="hidden" name="nameDuplication" value="idUncheck">
 				</div>
+				
 				<div style="height: 37.5px;" align="center">
-					<span id="result"></span>
-					<button type="button" id="btnCheck" >중복확인</button>
+					<span id="checkId"></span>
+					<button type="button" id="idCheckBtn" onclick="idCheck()" >중복확인</button>
 				</div>
+				
 				<div>
 					<input type="email" name="email" placeholder="이메일을 입력하세요"
 						style="width: 250px;">
 				</div>
+				
 				<div style="height: 37.5px;">
 					<span id="checkEmail"> </span>
 					<button type="button" onclick="emailCheck();">중복확인</button>
@@ -252,91 +256,12 @@
 					</select>
 				</div>
 				-->
+				<input type="hidden" name="checked_id" value="">
 				<div style="height: 37.5px;">
 					<br>
 					<!-- 체크됐을때 완료버튼 활성화하기 -->
 					<input type="checkbox" id="chk"> 
 					<a href="<%=contextPath%>/term.no">이용약관</a> 을 읽었으며, 동의합니다.
-
-					<script>
-
-					
-
-						// $('.input_id').focusout(function(){
-						// 	let userId = $('.input_id').val(); // input_id에 입력된 값
-						
-
-						// 	$.ajax({
-						// 		url:"IdCheckService",
-						// 		type:"post",
-						// 		data:{userId: userId},
-						// 		dataType:'json',
-						// 		success:function(result){
-						// 			if(result == 0){
-						// 				$("#checkId").html('사용할 수 없는 아이디입니다.');
-						// 				$("#checkId").attr('color','red');
-						// 			} else{
-						// 				$("#checkId").html('사용할 수 있는 아이디입니다.');
-						// 				$("#checkId").attr('color','green');
-						// 			}
-						// 		},
-						// 		error:function(){
-						// 			alert("서버요청실패");
-						// 		}
-						// 	})	
-						// })
-
-						// function idCheck(){
-						// 	var idStr = $("#id").val();
-
-						// 	$.ajax({
-						// 		url : "idCheckServlet?id=" + idStr,
-						// 		success : function(data){
-						// 			if(data == "success"){
-						// 				$("#result").text("사용가능한 아이디입니다.");
-						// 			} else if(data == "fail"){
-						// 				$("#result").text("중복된 아이디입니다.");
-						// 			}
-						// 		}
-						// 	})
-						// }
-
-						$('.pw').focusout(function(){
-							let pwd1 = $("#password1").val();
-							let pwd2 = $("#password2").val();
-
-							if(pwd1 =="" && pwd2 ==""){
-								null;
-							} else if(pwd1 !="" && pwd2 !=""){
-								if(pwd1 == pwd2){
-									$("#alert-success").css('display', 'block');
-									$("#alert-danger").css('display','none')
-								} else {
-									alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요")
-									$("#alert-success").css('display','none');
-									$("#alert-danger").css('display','block')
-									$("#password2").val("")
-								}
-
-							}
-						})
-
-
-						$(".box button").attr("disabled", true);
-							$("#chk").on('click', function(){
-								var chk = $("input:checkbox[id='chk']").is(":checked");
-								if(chk==true){
-									$(".box button").removeAttr('disabled');
-									$(".box").removeClass("on")
-								} else {
-									$(".box button").attr("disabled", true);
-									$(".box").addClass("on")
-								}
-							});
-							
-						
-					</script>
-
 
 				</div>
 				<div align="center" class="box on">
@@ -348,6 +273,133 @@
 		</form>
 	</div>
 	
+	<script>
+					
+		$("#idCheckBtn").click(function(){
+			$("input[name=checked_id]").val('y')
+			
+		})
+	
+	
+		function idCheck(){
+ 			
+ 			const idInputf = document.getElementById("idInput");
+
+			// id : 소문자,숫자로 5~12글자
+					
+			
+ 			const $idInput = $("#enroll-form input[name=memId]");
+ 			
+ 			$.ajax({
+ 				url:"idCheck.me",
+ 				data:{checkId:$idInput.val()},
+ 				success:function(result){
+ 					console.log(result)
+ 					
+ 					if(result == "NNNNN"){
+ 		 				alert("이미 사용중인 아이디입니다.")
+                        $idInput.val("")
+                        $idInput.focus()
+ 		 			}else if(result == "NNNNY"){
+ 		 				if($idInput.val() != null){
+	 		 				if(confirm("이 아이디를 사용하시겠습니까?")){
+	 		 					$idInput.attr("readonly", true)
+	 		 					$("#enroll-form :submit").attr("disabled", false);
+	 		 					$("#enroll-form :submit").removeAttr("disabled");
+	 		 					$idInput.css("backgroundColor", "lightblue")
+	 		 				}else { // 취소
+	 		 					$idInput.val("")
+	 	                        $idInput.focus()
+	 	                        $idInput.css("backgroundColor", "")
+	 	                       	$idInput.removeAttr("readonly").focus();
+	 		 				}
+ 		 					
+ 		 				}
+ 		                
+ 		            }
+ 				},
+ 				
+ 			});
+ 			
+ 			
+            
+		}
+		
+		
+		 /* $('.input_id').focusout(function(){
+		 	let userId = $('.input_id').val(); // input_id에 입력된 값
+
+		 	$.ajax({
+		 		url:"IdCheckService",
+		 		type:"post",
+		 		data:{userId: userId},
+		 		dataType:'json',
+		 		success:function(result){
+		 			if(result == 0){
+		 				$("#checkId").html('사용할 수 없는 아이디입니다.');
+						$("#checkId").attr('color','red');
+		 			} else{
+		 				$("#checkId").html('사용할 수 있는 아이디입니다.');
+		 				$("#checkId").attr('color','green');
+		 			}
+		 		},
+		 		error:function(){
+		 			alert("서버요청실패");
+		 		}
+		 	})	
+		 })
+*/
+		// function idCheck(){
+		// 	var idStr = $("#id").val();
+
+		// 	$.ajax({
+		// 		url : "idCheckServlet?id=" + idStr,
+		// 		success : function(data){
+		// 			if(data == "success"){
+		// 				$("#result").text("사용가능한 아이디입니다.");
+		// 			} else if(data == "fail"){
+		// 				$("#result").text("중복된 아이디입니다.");
+		// 			}
+		// 		}
+		// 	})
+		// }
+
+		$('.pw').focusout(function(){
+			let pwd1 = $("#password1").val();
+			let pwd2 = $("#password2").val();
+
+			if(pwd1 =="" && pwd2 ==""){
+				null;
+			} else if(pwd1 !="" && pwd2 !=""){
+				if(pwd1 == pwd2){
+					$("#alert-success").css('display', 'block');
+					$("#alert-danger").css('display','none')
+				} else {
+					alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요")
+					$("#alert-success").css('display','none');
+					$("#alert-danger").css('display','block')
+					$("#password2").val("")
+				}
+
+			}
+		})
+
+
+		$(".box button").attr("disabled", true);
+			$("#chk").on('click', function(){
+				var chk = $("input:checkbox[id='chk']").is(":checked");
+				if(chk==true){
+					$(".box button").removeAttr('disabled');
+					$(".box").removeClass("on")
+				} else {
+					$(".box button").attr("disabled", true);
+					$(".box").addClass("on")
+				}
+			});
+			
+		
+	</script>
+
 
 </body>
 </html>

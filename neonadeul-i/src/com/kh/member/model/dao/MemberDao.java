@@ -334,6 +334,7 @@ public class MemberDao {
 	}
 	
 	public int checkId(String id) {
+		System.out.println("아이디중복검사 dao도착");
 		String sql = prop.getProperty("checkId");
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
@@ -346,6 +347,7 @@ public class MemberDao {
 			pstmt.setString(1, id);
 			
 			rset = pstmt.executeQuery();
+			System.out.println(rset);
 			
 			if(rset.next()|| id.equals("")) {
 				idCheck = 0;
@@ -359,6 +361,38 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return idCheck;
+	}
+	
+	public int idCheck(Connection conn, String checkId) {
+		// select문 =>  rset필요, int리턴
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("idCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return count;
+		
+		
 	}
 
 }

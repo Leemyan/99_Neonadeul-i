@@ -104,7 +104,7 @@
               <script>
                 function validatePwd(){
                   if(){ // 탈퇴회원 막기. null로 실패, 방법 궁구하자
-                    	)
+                    	
                   }
                 }
               </script>
@@ -125,7 +125,7 @@
       </div>
         <div id="login_enroll" align="right">
             <button type="button" onclick="enrollPage()">가입하기</button>
-            <button type="button" id="login_btn" data-toggle="modal" data-target="#customer-chat">문의하기(chat)</button>
+            <button type="button" id="btn-chat" data-toggle="modal" data-target="#customer-chat">문의하기(chat)</button>
 
               <!-- The Modal -->
           

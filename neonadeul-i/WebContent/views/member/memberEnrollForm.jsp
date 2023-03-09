@@ -250,7 +250,7 @@
 	<script>
 	
 	function idCheck(){
-		const $idInput = $("#enroll-form>input[name=userName]");
+		const $idInput = $("#enroll-form input[name=userName]");
 			console.log(($idInput).val()) /*잘 가져오는지 체크*/
 			
 		$.ajax({

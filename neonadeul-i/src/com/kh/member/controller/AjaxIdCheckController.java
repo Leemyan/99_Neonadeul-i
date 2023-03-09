@@ -1,28 +1,25 @@
 package com.kh.member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.member.model.dao.MemberDao;
 import com.kh.member.model.service.MemberService;
 
 /**
- * Servlet implementation class IdCheckService
+ * Servlet implementation class AjaxIdCheckController
  */
-@WebServlet("/idCheck2.me")
-public class IdCheckService extends HttpServlet {
+@WebServlet("/idCheck.me")
+public class AjaxIdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdCheckService() {
+    public AjaxIdCheckController() {
         super();
     }
 
@@ -30,19 +27,17 @@ public class IdCheckService extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String checkId = request.getParameter("checkId");
 		System.out.println("컨트롤러 도착");
-		System.out.println(checkId);
+		String checkId = request.getParameter("checkId");
 		
 		int count = new MemberService().idCheck(checkId);
 		
-		if(count > 0) {  //존재하는 아이디가 있음 => 사용불가 => "NNNNN"
+		if(count > 0) { // 있다. 쓰지마라 
 			response.getWriter().print("NNNNN");
-			
-		}else {	//존재하는 아이디가 없음 => 사용가능 => "NNNNY"
+		}else { // 없다. 써라
 			response.getWriter().print("NNNNY");
-			
 		}
+	
 	}
 
 	/**

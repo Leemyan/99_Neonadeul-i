@@ -102,9 +102,11 @@
     AND EMAIL = ?
 	</entry>
 	
-	<entry key="checkId">
-	SELECT * FROM MEMBER
-		WHERE USERNAME = ?
+	<entry key="idCheck">
+	SELECT
+		    COUNT(*) "COUNT"
+		 FROM MEMBER
+		 WHERE USERNAME = ?
 	</entry>
 	
 </properties>

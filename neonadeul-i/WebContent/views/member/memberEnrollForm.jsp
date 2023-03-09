@@ -46,8 +46,10 @@
 
 <!-- jQuery Library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <!-- 일단 가져온 것 not a function -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -63,7 +65,13 @@
 <!-- bootstrap -> get started -> copy & paste -->
 </head>
 <body>
+
 	<script>
+
+		
+	</script>
+
+	<!-- <script>
 		function idCheck(){
 			window.open("/views/member/idCheck.jsp","_blank","width=300px height=100px");
 		}
@@ -103,7 +111,7 @@
 			
 			
 		}
-		</script>
+		</script> -->
 
 	<div id="wrap-me1">
 		<% if(alertMsg != null) { %>
@@ -174,25 +182,21 @@
 
 				<hr>
 
-				<div id="enroll=form">
-					<input type="text" id="idInput" name="userName"  placeholder="이름을 입력하세요(닉네임)" 
-					style="width: 250px;">
-					<input type="hidden" name="nameDuplication" value="idUncheck">
+				<div id="enroll-form">
+					<input type="text" name="userName"  placeholder="이름을 입력하세요(닉네임)" style="width: 250px;">
 				</div>
 				
 				<div style="height: 37.5px;" align="center">
-					<span id="checkId"></span>
-					<button type="button" id="idCheckBtn" onclick="idCheck()" >중복확인</button>
+					<button type="button" onclick="idCheck();">중복확인</button>
 				</div>
 				
 				<div>
-					<input type="email" name="email" placeholder="이메일을 입력하세요"
-						style="width: 250px;">
+					<input type="email" name="email" placeholder="이메일을 입력하세요" style="width: 250px;">
 				</div>
 				
 				<div style="height: 37.5px;">
 					<span id="checkEmail"> </span>
-					<button type="button" onclick="emailCheck();">중복확인</button>
+					<!-- <button type="button" onclick="emailCheck();">중복확인</button> -->
 				</div>
 
 				
@@ -216,43 +220,13 @@
 				<div style="height: 37.5px;">
 					<select name="birth" id="birthYear">
 						<option value="">2022</option>
-						<option value="">2021</option>
-						<option value="">2020</option>
-						<option value="">2019</option>
-						<option value="">2018</option>
-						<option value="">2017</option>
-						<option value="">2016</option>
-						<option value="">2015</option>
-						<option value="">2014</option>
-						<option value="">2013</option>
-						<option value="">2012</option>
-						<option value="">2011</option>
-						<option value="">2010</option>
-
+						
 					</select> <select name="birth" id="birthMonth">
 						<option value="">1월</option>
-						<option value="">2월</option>
-						<option value="">3월</option>
-						<option value="">4월</option>
-						<option value="">5월</option>
-						<option value="">6월</option>
-						<option value="">7월</option>
-						<option value="">8월</option>
-						<option value="">9월</option>
-						<option value="">10월</option>
-						<option value="">11월</option>
-						<option value="">12월</option>
+						
 					</select> <select name="birth" id="birthDay">
 						<option value="">1일</option>
-						<option value="">2일</option>
-						<option value="">3일</option>
-						<option value="">4일</option>
-						<option value="">5일</option>
-						<option value="">6일</option>
-						<option value="">7일</option>
-						<option value="">8일</option>
-						<option value="">9일</option>
-						<option value="">10일</option>
+						
 					</select>
 				</div>
 				-->
@@ -274,56 +248,92 @@
 	</div>
 	
 	<script>
-					
-		$("#idCheckBtn").click(function(){
-			$("input[name=checked_id]").val('y')
-			
-		})
 	
-	
-		function idCheck(){
- 			
- 			const idInputf = document.getElementById("idInput");
-
-			// id : 소문자,숫자로 5~12글자
-					
+	function idCheck(){
+		const $idInput = $("#enroll-form>input[name=userName]");
+			console.log(($idInput).val()) /*잘 가져오는지 체크*/
 			
- 			const $idInput = $("#enroll-form input[name=memId]");
- 			
- 			$.ajax({
- 				url:"idCheck.me",
- 				data:{checkId:$idInput.val()},
- 				success:function(result){
- 					console.log(result)
- 					
- 					if(result == "NNNNN"){
- 		 				alert("이미 사용중인 아이디입니다.")
-                        $idInput.val("")
-                        $idInput.focus()
- 		 			}else if(result == "NNNNY"){
- 		 				if($idInput.val() != null){
-	 		 				if(confirm("이 아이디를 사용하시겠습니까?")){
-	 		 					$idInput.attr("readonly", true)
-	 		 					$("#enroll-form :submit").attr("disabled", false);
-	 		 					$("#enroll-form :submit").removeAttr("disabled");
-	 		 					$idInput.css("backgroundColor", "lightblue")
-	 		 				}else { // 취소
-	 		 					$idInput.val("")
-	 	                        $idInput.focus()
-	 	                        $idInput.css("backgroundColor", "")
-	 	                       	$idInput.removeAttr("readonly").focus();
-	 		 				}
- 		 					
+		$.ajax({
+			url:"idCheck.me",
+			data:{checkId:$idInput.val()},
+			success:function(result){
+					console.log(result)
+					
+			/* 		if(result == "NNNNN"){
+		 				alert("이미 사용중인 아이디입니다.")
+	                    $idInput.val("")
+	                    $idInput.focus()
+		 			}else if(result == "NNNNY"){
+		 				if($idInput.val() != null){
+ 		 				if(confirm("이 아이디를 사용하시겠습니까?")){
+ 		 					$idInput.css("backgroundColor", "gray")
+ 		 				}else { // 취소
+ 		 					$idInput.val("")
+ 	                        $idInput.focus()
+ 	                        $idInput.css("backgroundColor", "")
  		 				}
+		 				}
+		            } */
+				},
+				error:function(){
+					console.log("아이디 중복체크용 ajax 통신 실패!");
+				}
+		})
+	}
+
+
+
+
+					// 중복체크 버튼으로 해보는 것 (0309 FAIL)
+		// $("#idCheckBtn").click(function(){
+		// 	$("input[name=checked_id]").val('y')
+			
+		// })
+	
+	
+		// function idCheck(){
+ 			
+ 		// 	const idInputf = document.getElementById("idInput");
+
+		// 	// id : 소문자,숫자로 5~12글자
+					
+			
+ 		// 	const $idInput = $("#enroll-form input[name=memId]");
+ 			
+ 		// 	// $.ajax({
+ 		// 	// 	url:"idCheck.me",
+ 		// 	// 	data:{checkId:$idInput.val()},
+ 		// 	// 	success:function(result){
+ 		// 	// 		console.log(result)
+ 					
+ 		// 	// 		if(result == "NNNNN"){
+ 		//  	// 			alert("이미 사용중인 아이디입니다.")
+        //     //             $idInput.val("")
+        //     //             $idInput.focus()
+ 		//  	// 		}else if(result == "NNNNY"){
+ 		//  	// 			if($idInput.val() != null){
+	 	// 	//  				if(confirm("이 아이디를 사용하시겠습니까?")){
+	 	// 	//  					$idInput.attr("readonly", true)
+	 	// 	//  					$("#enroll-form :submit").attr("disabled", false);
+	 	// 	//  					$("#enroll-form :submit").removeAttr("disabled");
+	 	// 	//  					$idInput.css("backgroundColor", "lightblue")
+	 	// 	//  				}else { // 취소
+	 	// 	//  					$idInput.val("")
+	 	//     //                     $idInput.focus()
+	 	//     //                     $idInput.css("backgroundColor", "")
+	 	//     //                    	$idInput.removeAttr("readonly").focus();
+	 	// 	//  				}
+ 		 					
+ 		//  	// 			}
  		                
- 		            }
- 				},
+ 		//     //         }
+ 		// 	// 	},
  				
- 			});
+ 		// 	// });
  			
  			
             
-		}
+		// }
 		
 		
 		 /* $('.input_id').focusout(function(){
@@ -380,7 +390,6 @@
 					$("#alert-danger").css('display','block')
 					$("#password2").val("")
 				}
-
 			}
 		})
 

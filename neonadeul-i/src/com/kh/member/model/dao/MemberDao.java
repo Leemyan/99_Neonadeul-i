@@ -364,7 +364,9 @@ public class MemberDao {
 	}
 	
 	public int idCheck(Connection conn, String checkId) {
-		// select문 =>  rset필요, int리턴
+		
+		System.out.println("dao도착");
+		
 		int count = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

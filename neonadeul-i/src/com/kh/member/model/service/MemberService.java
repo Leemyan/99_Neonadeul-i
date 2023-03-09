@@ -133,18 +133,11 @@ public class MemberService {
 	}
 	
 	public int idCheck(String checkId) {
+		
+		System.out.println("서비스 도착");
 		Connection conn = getConnection();
 		
 		int count = new MemberDao().idCheck(conn, checkId);
-		
-		
-		if(count > 0) {
-			
-			
-		}else {
-			
-			
-		}
 		
 		close(conn);
 

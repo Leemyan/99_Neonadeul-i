@@ -259,7 +259,7 @@
 			success:function(result){
 					console.log(result)
 					
-			/* 		if(result == "NNNNN"){
+					if(result == "NNNNN"){
 		 				alert("이미 사용중인 아이디입니다.")
 	                    $idInput.val("")
 	                    $idInput.focus()
@@ -273,7 +273,7 @@
  	                        $idInput.css("backgroundColor", "")
  		 				}
 		 				}
-		            } */
+		            } 
 				},
 				error:function(){
 					console.log("아이디 중복체크용 ajax 통신 실패!");
